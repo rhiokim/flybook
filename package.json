@@ -14,9 +14,12 @@
   },
   "scripts": {
     "build": "fly",
+    "release": "fly release",
     "serve": "serve out -s",
-    "deploy": "npm run fix:static && gh-pages -d out",
-    "fix:static": "replace /static/ /next-book/static/ ./out/**.html"
+    "docs": "./dist/bin/cli.js docs",
+    "pages": "npm run docs && npm run fix:link && npm run fix:static && gh-pages -d out",
+    "fix:link": "replace '<a href=\"/' '<a href=\"/next-book/' ./out -r --include='*.html'",
+    "fix:static": "replace '/static/' '/next-book/static/' ./out -r --include='*.html'"
   },
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
@@ -26,7 +29,6 @@
     "js-yaml": "^3.8.4",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
-    "node-notifier": "^5.1.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "recursive-copy": "^2.0.6",
@@ -34,8 +36,7 @@
     "remark-autolink-headings": "^5.0.0",
     "remark-highlight.js": "^5.0.0",
     "remark-html": "^6.0.0",
-    "remark-slug": "^4.2.2",
-    "replace": "^0.3.0"
+    "remark-slug": "^4.2.2"
   },
   "devDependencies": {
     "fly": "^2.0.6",
@@ -43,6 +44,8 @@
     "fly-clear": "^1.0.1",
     "fly-esnext": "^2.0.1",
     "fly-watch": "^1.1.1",
+    "node-notifier": "^5.1.2",
+    "replace": "^0.3.0",
     "gh-pages": "^1.0.0"
   },
   "bin": {
@@ -50,6 +53,7 @@
   },
   "files": [
     "dist",
+    "static",
     "app.js",
     "index.js"
   ]

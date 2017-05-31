@@ -35,10 +35,10 @@ module.exports = ({ docDir, outDir, slient }) => {
 
   const routes = routeTable(docDir);
 
-  mkdirp.sync(outDir);
-
   /* clean previous files */
   del.sync([`${outDir}/**/*`]);
+
+  mkdirp.sync(outDir);
 
   makeIndexPage(docDir, outDir, routes);
 
@@ -60,7 +60,7 @@ module.exports = ({ docDir, outDir, slient }) => {
     });
   });
 
-  copy("static", `${outDir}/static`).then(result => {
-    console.log("created");
+  copy(join(__dirname, "../static"), `${outDir}/static`).then(result => {
+    console.log(`Next Book was generated at ${outDir}`);
   });
 };

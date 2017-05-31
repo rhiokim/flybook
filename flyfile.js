@@ -51,6 +51,10 @@ export default async function(fly) {
   await fly.watch("pages/**/*.js", "copy");
 }
 
+export async function release(fly) {
+  await fly.clear("dist").start("build");
+}
+
 // notification helper
 function notify(msg) {
   return notifier.notify({
