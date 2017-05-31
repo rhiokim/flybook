@@ -8,12 +8,12 @@ import { renderToString, renderToStaticMarkup } from "react-dom/server";
 
 import routeTable from "./libs/routes";
 import mdLoader from "./libs/md-loader";
-import template from "./template";
+import _document from "./libs/_document";
 import App from "./pages/App";
 import pkg from "./package.json";
 
 const Html = (title, contents, routes) => {
-  return template({
+  return _document({
     title: pkg.name,
     body: renderToStaticMarkup(
       createElement(App, { title: title, contents: contents, toc: routes })

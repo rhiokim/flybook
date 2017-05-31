@@ -2,7 +2,7 @@
 import { resolve, join } from "path";
 import { existsSync } from "fs";
 import parseArgs from "minimist";
-import exportApp from "../../";
+import exportApp from "../app";
 
 const argv = parseArgs(process.argv.slice(2), {
   alias: {

@@ -9,9 +9,9 @@ var _minimist = require("minimist");
 
 var _minimist2 = _interopRequireDefault(_minimist);
 
-var _ = require("../../");
+var _app = require("../app");
 
-var _2 = _interopRequireDefault(_);
+var _app2 = _interopRequireDefault(_app);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57,4 +57,4 @@ var options = {
   outDir: argv.outdir ? (0, _path.resolve)(argv.outdir) : (0, _path.resolve)(dir, "../out")
 };
 
-(0, _2.default)(options);
+(0, _app2.default)(options);

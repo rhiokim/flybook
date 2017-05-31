@@ -1,7 +1,7 @@
 {
   "name": "next-book",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/app.js",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/rhiokim/next-book",
@@ -47,5 +47,10 @@
   },
   "bin": {
     "next-note": "./dist/bin/cli.js"
-  }
+  },
+  "files": [
+    "dist",
+    "app.js",
+    "index.js"
+  ]
 }
