@@ -72,3 +72,19 @@ footer {
   color: #333;
   font-weight: 700;
 }
+
+/*
+ * icon
+ */
+h1:hover span.icon-link,
+h2:hover span.icon-link,
+h3:hover span.icon-link,
+h4:hover span.icon-link,
+h5:hover span.icon-link,
+h6:hover span.icon-link {
+  visibility: visible
+}
+
+.markdown-body h2 {
+  border-bottom: 0;
+}

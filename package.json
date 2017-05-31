@@ -27,7 +27,9 @@
     "react-dom": "^15.5.4",
     "recursive-copy": "^2.0.6",
     "remark": "^7.0.1",
+    "remark-autolink-headings": "^5.0.0",
     "remark-highlight.js": "^5.0.0",
-    "remark-html": "^6.0.0"
+    "remark-html": "^6.0.0",
+    "remark-slug": "^4.2.2"
   }
 }
