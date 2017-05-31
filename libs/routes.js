@@ -2,11 +2,10 @@ import { readFileSync } from "fs";
 import { join } from "path";
 import { safeLoad } from "js-yaml";
 
-const baseDir = process.cwd();
-
-module.exports = (targetDir = "docs") => {
+module.exports = targetDir => {
   let routes;
-  const file = join(baseDir, targetDir, "toc.yml");
+  const file = join(targetDir, "toc.yml");
+
   try {
     routes = readFileSync(file, "utf8");
     routes = safeLoad(routes);

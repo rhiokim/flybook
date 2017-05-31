@@ -12,8 +12,9 @@ import template from "./template";
 import App from "./pages/App";
 import pkg from "./package.json";
 
-const BASE_DIR = "./docs";
-const OUTPUT_DIR = "./out";
+const BASE_DIR = join(process.cwd(), "docs");
+const OUTPUT_DIR = join(process.cwd(), "out");
+
 const routes = routeTable(BASE_DIR);
 
 const Html = (title, contents, routes) => {
@@ -32,6 +33,8 @@ const makeIndexPage = () => {
   /* gen new files */
   fs.writeFileSync(join(OUTPUT_DIR, "index.html"), html, { encoding: "utf8" });
 };
+
+mkdirp.sync(OUTPUT_DIR);
 
 /* clean previous files */
 del.sync(["out/**/*"]);
