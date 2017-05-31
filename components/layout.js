@@ -2,9 +2,14 @@ import React from "react";
 
 import Nav from "./nav";
 import Chap from "./chap";
-import pkg from "../package.json";
 
-module.exports = ({ children, title = "", className, toc = {} }: Props) => (
+module.exports = ({
+  children,
+  title = "",
+  className,
+  toc = {},
+  pkg = {}
+}: Props) => (
   <div className={className}>
 
     <header className="site-header">

@@ -10,13 +10,14 @@ import routeTable from "./libs/routes";
 import mdLoader from "./libs/md-loader";
 import _document from "./libs/_document";
 import App from "./pages/App";
-import pkg from "./package.json";
+
+const pkg = require(`${process.cwd()}/package.json`);
 
 const Html = (title, contents, routes) => {
   return _document({
-    title: pkg.name,
+    title: title,
     body: renderToStaticMarkup(
-      createElement(App, { title: title, contents: contents, toc: routes })
+      createElement(App, { title, contents, toc: routes, pkg })
     )
   });
 };

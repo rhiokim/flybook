@@ -35,7 +35,6 @@ export async function copy(fly) {
     .source("pages/**/*.js")
     .babel({ babelrc: true })
     .target("dist/pages");
-  await fly.source("package.json").target("dist");
   notify("Compiled page files and Copied package.json");
 }
 
