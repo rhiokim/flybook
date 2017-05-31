@@ -1,9 +1,11 @@
 import React from "react";
 
+import Layout from "../components/layout";
+
 const App = props => (
-  <div>
+  <Layout className="wrap container-fluid" title="Next Note">
     <p>server-side rendering sample</p>
-  </div>
+  </Layout>
 );
 
 module.exports = App;
