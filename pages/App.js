@@ -2,9 +2,9 @@ import React from "react";
 
 import Layout from "../components/layout";
 
-const App = props => (
-  <Layout className="wrap container-fluid" title="Next Note">
-    <p>server-side rendering sample</p>
+const App = ({ title, toc, contents }) => (
+  <Layout className="wrap container-fluid" title={title} toc={toc}>
+    <p>{contents}</p>
   </Layout>
 );
 

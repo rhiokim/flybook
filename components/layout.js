@@ -1,6 +1,7 @@
 import React from "react";
 
 import Nav from "./nav";
+import Chap from "./chap";
 import pkg from "../package.json";
 
 module.exports = ({ children, title = "", className, toc = {} }: Props) => (
@@ -17,7 +18,7 @@ module.exports = ({ children, title = "", className, toc = {} }: Props) => (
           <Chap title={key} key={i}>
             {Object.entries(toc[key]).map((item, i) => (
               <li key={i}>
-                <a href={item[1]}>{item[0]}</a>
+                <a href={`/${item[1].replace(/\.md/g, "")}`}>{item[0]}</a>
               </li>
             ))}
           </Chap>

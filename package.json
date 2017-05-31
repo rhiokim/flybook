@@ -13,7 +13,7 @@
     "url": "https://note.github.io/"
   },
   "scripts": {
-    "start": "node index.js",
+    "build": "node index.js",
     "serve": "serve out -s"
   },
   "dependencies": {
@@ -21,6 +21,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
     "del": "^2.2.2",
+    "js-yaml": "^3.8.4",
+    "mkdirp": "^0.5.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "recursive-copy": "^2.0.6"
