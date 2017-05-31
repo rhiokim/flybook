@@ -16,3 +16,6 @@ npm-debug.log
 v8.log
 .vscode
 yarn-*.log
+
+#
+out

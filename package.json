@@ -11,6 +11,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "recursive-copy": "^2.0.6"
   }
 }
