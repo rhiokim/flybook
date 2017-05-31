@@ -1,0 +1,90 @@
+body {
+  font-size: 1em;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Rubik", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222;
+}
+
+a {
+  text-decoration: none;
+}
+
+.site-header {
+  padding: 50px 10px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  max-width: 940px;
+  border-bottom: 1px solid #efefef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.nav-link a:not(:first-child) {
+  margin-left: 15px;
+}
+
+.main {
+  display: flex;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 30px 10px;
+}
+
+aside {
+  width: 240px;
+  padding: 0 15px 0 0;
+  margin: 0 15px 0 0;
+  border-right: 1px solid #ececec;
+}
+
+aside ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+article {
+}
+
+footer {
+  text-align: center;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 30px 10px;
+}
+
+.chap {
+}
+
+.chap ul {
+  margin-top: 0
+}
+
+.chap-title {
+  font-size: 18px;
+  color: #333;
+  font-weight: 700;
+}
+
+/*
+ * icon
+ */
+h1:hover span.icon-link,
+h2:hover span.icon-link,
+h3:hover span.icon-link,
+h4:hover span.icon-link,
+h5:hover span.icon-link,
+h6:hover span.icon-link {
+  visibility: visible
+}
+
+.markdown-body h2 {
+  border-bottom: 0;
+}
