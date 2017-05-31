@@ -14,7 +14,9 @@
   },
   "scripts": {
     "build": "node index.js",
-    "serve": "serve out -s"
+    "serve": "serve out -s",
+    "deploy": "npm run fix:static && gh-pages -d out",
+    "fix:static": "replace /static/ /next-book/static/ ./out/**.html"
   },
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
@@ -30,6 +32,10 @@
     "remark-autolink-headings": "^5.0.0",
     "remark-highlight.js": "^5.0.0",
     "remark-html": "^6.0.0",
-    "remark-slug": "^4.2.2"
+    "remark-slug": "^4.2.2",
+    "replace": "^0.3.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.0.0"
   }
 }
