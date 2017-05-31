@@ -21,7 +21,7 @@ module.exports = ({ body, title }) => {
       <link rel="stylesheet" href="/static/css/normalize.css" />
       <link rel="stylesheet" href="/static/css/flexboxgrid.min.css" />
       <link rel="stylesheet" href="/static/css/main.css" />
-
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css" />
       <body>
         <div id="root">${body}</div>
       </body>
