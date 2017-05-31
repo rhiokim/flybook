@@ -1,16 +1,16 @@
 {
-  "name": "test-react-dom-server",
+  "name": "next-book",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/rhiokim/note",
+    "url": "https://github.com/rhiokim/next-book",
     "type": "git"
   },
   "author": {
     "name": "Rhio Kim",
     "email": "rhio.kim@gmail.com",
-    "url": "https://note.github.io/"
+    "url": "https://next-book.github.io/"
   },
   "scripts": {
     "build": "node index.js",
