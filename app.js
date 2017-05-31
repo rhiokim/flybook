@@ -12,11 +12,6 @@ import template from "./template";
 import App from "./pages/App";
 import pkg from "./package.json";
 
-const BASE_DIR = join(process.cwd(), "docs");
-const OUTPUT_DIR = join(process.cwd(), "out");
-
-const routes = routeTable(BASE_DIR);
-
 const Html = (title, contents, routes) => {
   return template({
     title: pkg.name,
@@ -26,39 +21,46 @@ const Html = (title, contents, routes) => {
   });
 };
 
-const makeIndexPage = () => {
-  let contents = mdLoader(join(BASE_DIR, "index.md"));
+const makeIndexPage = (docDir, outDir, routes) => {
+  let contents = mdLoader(join(docDir, "index.md"));
   let html = Html(pkg.name, contents, routes);
 
   /* gen new files */
-  fs.writeFileSync(join(OUTPUT_DIR, "index.html"), html, { encoding: "utf8" });
+  fs.writeFileSync(join(outDir, "index.html"), html, { encoding: "utf8" });
 };
 
-mkdirp.sync(OUTPUT_DIR);
+module.exports = ({ docDir, outDir, slient }) => {
+  const BASE_DIR = join(docDir || "docs");
+  const OUTPUT_DIR = join(outDir || "out");
 
-/* clean previous files */
-del.sync(["out/**/*"]);
+  const routes = routeTable(docDir);
 
-makeIndexPage();
+  mkdirp.sync(outDir);
 
-Object.keys(routes).map(key => {
-  const subRoutes = routes[key];
+  /* clean previous files */
+  del.sync([`${outDir}/**/*`]);
 
-  Object.entries(subRoutes).map((item, i) => {
-    let outputDir = join(OUTPUT_DIR, item[1].replace(/\.md$/, ""));
-    let outputFile = join(outputDir, "index.html");
+  makeIndexPage(docDir, outDir, routes);
 
-    let contents = mdLoader(join(BASE_DIR, item[1]));
-    let html = Html(item[0], contents, routes);
+  Object.keys(routes).map(key => {
+    const subRoutes = routes[key];
 
-    /* mkdir route dir */
-    mkdirp.sync(join(outputDir));
+    Object.entries(subRoutes).map((item, i) => {
+      let outputDir = join(outDir, item[1].replace(/\.md$/, ""));
+      let outputFile = join(outputDir, "index.html");
 
-    /* gen new files */
-    fs.writeFileSync(outputFile, html, { encoding: "utf8" });
+      let contents = mdLoader(join(docDir, item[1]));
+      let html = Html(item[0], contents, routes);
+
+      /* mkdir route dir */
+      mkdirp.sync(outputDir);
+
+      /* gen new files */
+      fs.writeFileSync(outputFile, html, { encoding: "utf8" });
+    });
   });
-});
 
-copy("static", "out/static").then(result => {
-  console.log("created");
-});
+  copy("static", `${outDir}/static`).then(result => {
+    console.log("created");
+  });
+};
