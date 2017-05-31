@@ -7,6 +7,7 @@ import React, { createElement } from "react";
 import { renderToString, renderToStaticMarkup } from "react-dom/server";
 
 import routeTable from "./libs/routes";
+import mdLoader from "./libs/md-loader";
 import template from "./template";
 import App from "./pages/App";
 import pkg from "./package.json";
@@ -15,17 +16,18 @@ const BASE_DIR = "./docs";
 const OUTPUT_DIR = "./out";
 const routes = routeTable(BASE_DIR);
 
-const Html = (title, routes) => {
+const Html = (title, contents, routes) => {
   return template({
-    title: "react-book",
+    title: pkg.name,
     body: renderToStaticMarkup(
-      createElement(App, { title: title, toc: routes })
+      createElement(App, { title: title, contents: contents, toc: routes })
     )
   });
 };
 
 const makeIndexPage = () => {
-  let html = Html(pkg.name, routes);
+  let contents = mdLoader(join(BASE_DIR, "index.md"));
+  let html = Html(pkg.name, contents, routes);
 
   /* gen new files */
   fs.writeFileSync(join(OUTPUT_DIR, "index.html"), html, { encoding: "utf8" });
@@ -43,7 +45,8 @@ Object.keys(routes).map(key => {
     let outputDir = join(OUTPUT_DIR, item[1].replace(/\.md$/, ""));
     let outputFile = join(outputDir, "index.html");
 
-    let html = Html(item[0], routes);
+    let contents = mdLoader(join(BASE_DIR, item[1]));
+    let html = Html(item[0], contents, routes);
 
     /* mkdir route dir */
     mkdirp.sync(join(outputDir));
