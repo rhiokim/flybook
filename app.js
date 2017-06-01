@@ -31,9 +31,6 @@ const makeIndexPage = (docDir, outDir, routes) => {
 };
 
 module.exports = ({ docDir, outDir, slient }) => {
-  const BASE_DIR = join(docDir || "docs");
-  const OUTPUT_DIR = join(outDir || "out");
-
   const routes = routeTable(docDir);
 
   /* clean previous files */

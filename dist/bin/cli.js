@@ -13,6 +13,10 @@ var _app = require("../app");
 
 var _app2 = _interopRequireDefault(_app);
 
+var _toc = require("../libs/toc");
+
+var _toc2 = _interopRequireDefault(_toc);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var argv = (0, _minimist2.default)(process.argv.slice(2), {
@@ -41,13 +45,15 @@ if (!(0, _fs.existsSync)(dir)) {
   process.exit(1);
 }
 
+(0, _toc2.default)(dir, argv.toc, argv["toc-overwrite"]);
+
 if (!(0, _fs.existsSync)((0, _path.join)(dir, "toc.yml"))) {
   if ((0, _fs.existsSync)((0, _path.join)(dir, "..", "toc.yml"))) {
     console.log("> No `toc.yml` file found. Did you mean to run `next-book` in the parent (`../`) directory?");
     process.exit(1);
   }
 
-  console.log("> Couldn't find a `toc.yml` file. Please create one under the documentation root");
+  console.log("> Couldn't find a `toc.yml` file. Please create one under the documentation root\nUsage:\n  fly-book [DOCS_ROOT] --toc   # Generate toc.yml file into [DOCS_ROOT] directory");
   process.exit(1);
 }
 

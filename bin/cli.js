@@ -3,6 +3,7 @@ import { resolve, join } from "path";
 import { existsSync } from "fs";
 import parseArgs from "minimist";
 import exportApp from "../app";
+import exportToc from "../libs/toc";
 
 const argv = parseArgs(process.argv.slice(2), {
   alias: {
@@ -44,6 +45,8 @@ if (!existsSync(dir)) {
   process.exit(1);
 }
 
+exportToc(dir, argv.toc, argv["toc-overwrite"]);
+
 if (!existsSync(join(dir, "toc.yml"))) {
   if (existsSync(join(dir, "..", "toc.yml"))) {
     console.log(
@@ -53,7 +56,7 @@ if (!existsSync(join(dir, "toc.yml"))) {
   }
 
   console.log(
-    "> Couldn't find a `toc.yml` file. Please create one under the documentation root"
+    "> Couldn't find a `toc.yml` file. Please create one under the documentation root\nUsage:\n  fly-book [DOCS_ROOT] --toc   # Generate toc.yml file into [DOCS_ROOT] directory"
   );
   process.exit(1);
 }

@@ -27,7 +27,9 @@
     "babel-register": "^6.24.1",
     "classnames": "^2.2.5",
     "del": "^2.2.2",
+    "glob": "^7.1.2",
     "js-yaml": "^3.8.4",
+    "json2yaml": "^1.1.0",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "react": "^15.5.4",
@@ -37,7 +39,8 @@
     "remark-autolink-headings": "^5.0.0",
     "remark-highlight.js": "^5.0.0",
     "remark-html": "^6.0.0",
-    "remark-slug": "^4.2.2"
+    "remark-slug": "^4.2.2",
+    "titleize": "^1.0.0"
   },
   "devDependencies": {
     "fly": "^2.0.6",

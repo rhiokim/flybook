@@ -1075,7 +1075,7 @@ glob-parent@^2.0.0:
   dependencies:
     is-glob "^2.0.0"
 
-glob@^7.0.3, glob@^7.0.5, glob@^7.1.1:
+glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.2.tgz#c19c9df9a028702d678612384a6552404c636d15"
   dependencies:
@@ -1447,6 +1447,12 @@ json-stable-stringify@^1.0.1:
 json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
+
+json2yaml@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/json2yaml/-/json2yaml-1.1.0.tgz#5414d907f9816586b80c513ec2e3aeb2ab819a6c"
+  dependencies:
+    remedial "1.x"
 
 json5@^0.5.0:
   version "0.5.1"
@@ -2058,6 +2064,10 @@ remark@^7.0.1:
     remark-stringify "^3.0.0"
     unified "^6.0.0"
 
+remedial@1.x:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/remedial/-/remedial-1.0.7.tgz#d6674413a65676007be00dd400980987b2c300c1"
+
 remove-trailing-separator@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.0.1.tgz#615ebb96af559552d4bf4057c8436d486ab63cc4"
@@ -2288,6 +2298,10 @@ tar@^2.2.1:
     block-stream "*"
     fstream "^1.0.2"
     inherits "2"
+
+titleize@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/titleize/-/titleize-1.0.0.tgz#7d350722061830ba6617631e0cfd3ea08398d95a"
 
 to-fast-properties@^1.0.1:
   version "1.0.3"
