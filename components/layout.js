@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 
 import Nav from "./nav";
 import Chap from "./chap";
@@ -22,7 +23,7 @@ module.exports = ({
         {Object.keys(toc).map((key, i) => (
           <Chap title={key} key={i}>
             {Object.entries(toc[key]).map((item, i) => (
-              <li key={i}>
+              <li key={i} className={classnames({ active: title === item[0] })}>
                 <a href={`/${item[1].replace(/\.md/g, "")}`}>{item[0]}</a>
               </li>
             ))}

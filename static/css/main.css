@@ -21,6 +21,10 @@ a {
   align-items: center;
 }
 
+.site-header a {
+  color: #333
+}
+
 .nav-link {
   display: flex;
   list-style: none;
@@ -66,7 +70,15 @@ footer {
 }
 
 .chap ul {
-  margin-top: 0
+  margin-top: 0;
+}
+
+.chap li > a {
+  color: #6a737d;
+}
+
+.chap li.active a{
+  color: #63a35c;
 }
 
 .chap-title {

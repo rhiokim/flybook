@@ -697,6 +697,10 @@ chokidar@^1.6.1:
   optionalDependencies:
     fsevents "^1.0.0"
 
+classnames@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
+
 clor@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/clor/-/clor-5.1.0.tgz#8d320650d7193add04ebf891d79dee4cabc80c2c"

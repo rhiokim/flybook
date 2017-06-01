@@ -1,5 +1,3 @@
-# next book
-
 `Next Book` is a simple utility to generate static website. This is inspired by [funbook](https://funbook.js.org/) and [next.js export functionality](https://zeit.co/blog/next)
 
 Rewrited using by **React** and **React DOM Server**
