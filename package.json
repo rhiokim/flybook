@@ -1,16 +1,16 @@
 {
-  "name": "next-book",
+  "name": "fly-book",
   "version": "1.0.0",
   "main": "./dist/app.js",
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/rhiokim/next-book",
+    "url": "https://github.com/rhiokim/fly-book",
     "type": "git"
   },
   "author": {
     "name": "Rhio Kim",
     "email": "rhio.kim@gmail.com",
-    "url": "https://next-book.github.io/"
+    "url": "https://fly-book.github.io/"
   },
   "scripts": {
     "build": "fly",
@@ -18,8 +18,8 @@
     "serve": "serve out -s -p 5002",
     "docs": "./dist/bin/cli.js docs",
     "pages": "npm run docs && npm run fix:link && npm run fix:static && gh-pages -d out",
-    "fix:link": "replace '<a href=\"/' '<a href=\"/next-book/' ./out -r --include='*.html'",
-    "fix:static": "replace '/static/' '/next-book/static/' ./out -r --include='*.html'"
+    "fix:link": "replace '<a href=\"/' '<a href=\"/fly-book/' ./out -r --include='*.html'",
+    "fix:static": "replace '/static/' '/fly-book/static/' ./out -r --include='*.html'"
   },
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
@@ -50,7 +50,7 @@
     "replace": "^0.3.0"
   },
   "bin": {
-    "next-note": "./dist/bin/cli.js"
+    "fly-book": "./dist/bin/cli.js"
   },
   "files": [
     "dist",
