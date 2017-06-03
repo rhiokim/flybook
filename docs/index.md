@@ -7,7 +7,7 @@ Rewrited using by **React** and **React DOM Server**
 **`not npm publish yet'**
 
 ```bash
-$ npm i -g next-book
+$ npm i -g flybook
 $ ls [DOCUMENT_ROOT]
 [DOCUMENT_ROOT]
 |____advanced
@@ -19,5 +19,5 @@ $ ls [DOCUMENT_ROOT]
 | \____syntax-highlight.md
 |____index.md
 |____toc.yml
-$ next-book [DOCUMENT_ROOT]
+$ flybook [DOCUMENT_ROOT]
 ```
