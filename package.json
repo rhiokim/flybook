@@ -18,8 +18,8 @@
     "serve": "serve out -s -p 5002",
     "docs": "./dist/bin/cli.js docs",
     "pages": "npm run docs && npm run fix:link && npm run fix:static && gh-pages -d out",
-    "fix:link": "replace '<a href=\"/' '<a href=\"/fly-book/' ./out -r --include='*.html'",
-    "fix:static": "replace '/static/' '/fly-book/static/' ./out -r --include='*.html'"
+    "fix:link": "replace '<a href=\"/' '<a href=\"/fly-book/' ./out -r -s --include='*.html'",
+    "fix:static": "replace '/static/' '/fly-book/static/' ./out -r -s --include='*.html'"
   },
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
@@ -28,6 +28,7 @@
     "classnames": "^2.2.5",
     "del": "^2.2.2",
     "glob": "^7.1.2",
+    "inquirer": "^3.0.6",
     "js-yaml": "^3.8.4",
     "json2yaml": "^1.1.0",
     "minimist": "^1.2.0",

@@ -1,15 +1,25 @@
 #!/usr/bin/env node
 import { resolve, join } from "path";
 import { existsSync } from "fs";
+import inquirer from "inquirer";
 import parseArgs from "minimist";
 import exportApp from "../app";
-import exportToc from "../libs/toc";
+import { writeTOC, overwriteTOC } from "../libs/toc";
+
+var questions = [
+  {
+    type: "input",
+    name: "toc",
+    message: "There is no `toc.yml` which is table of contents file to generate static book\nPlease create table of content [Y/n]"
+  }
+];
 
 const argv = parseArgs(process.argv.slice(2), {
   alias: {
     h: "help",
     s: "silent",
-    o: "outdir"
+    o: "outdir",
+    t: "toc"
   },
   boolean: ["h"],
   default: {
@@ -24,7 +34,7 @@ if (argv.help) {
     Description
       Exports the static website for production deployment
     Usage
-      $ next-book <outdir> [options]
+      $ fly-book <outdir> [options]
     <outdir> represents where the compiled dist folder should go.
     If no directory is provided, the 'out' folder will be created in the current directory.
     You can set a custom folder in config https://rhiokim.github.io/next-note
@@ -32,6 +42,7 @@ if (argv.help) {
       -h - list this help
       -o - set the output dir (defaults to 'out')
       -s - do not print any messages to console
+      -t - generate new toc.yml file
   `
   );
   process.exit(0);
@@ -39,32 +50,54 @@ if (argv.help) {
 
 const dir = resolve(argv._[0] || ".");
 
+const gen = () => {
+  const options = {
+    docDir: dir,
+    silent: argv.silent,
+    outDir: argv.outdir ? resolve(argv.outdir) : resolve(dir, "../out")
+  };
+
+  exportApp(options);
+};
+
 // Check if pages dir exists and warn if not
 if (!existsSync(dir)) {
   console.log(`> No such directory exists as the documentation root: ${dir}`);
   process.exit(1);
 }
 
-exportToc(dir, argv.toc, argv["toc-overwrite"]);
-
+// No table of contents file found
 if (!existsSync(join(dir, "toc.yml"))) {
-  if (existsSync(join(dir, "..", "toc.yml"))) {
-    console.log(
-      "> No `toc.yml` file found. Did you mean to run `next-book` in the parent (`../`) directory?"
-    );
-    process.exit(1);
+  inquirer.prompt(questions).then(answer => {
+    console.log(answer);
+    if (answer.toc === "" || answer.toc === "y") {
+      writeTOC(dir);
+      gen();
+    } else {
+      console.log(
+        "> No `toc.yml` file found. Did you mean to run `next-book` in the parent (`../`) directory?"
+      );
+      process.exit(1);
+    }
+  });
+} else {
+  // `toc.yml` file found, but wannt renew
+  if (argv.toc) {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "toc",
+          message: "`toc.yml` file found. Overwrite? [y/N]"
+        }
+      ])
+      .then(answer => {
+        if (answer.toc === "y") {
+          overwriteTOC(dir);
+        }
+        gen();
+      });
+  } else {
+    gen();
   }
-
-  console.log(
-    "> Couldn't find a `toc.yml` file. Please create one under the documentation root\nUsage:\n  fly-book [DOCS_ROOT] --toc   # Generate toc.yml file into [DOCS_ROOT] directory"
-  );
-  process.exit(1);
 }
-
-const options = {
-  docDir: dir,
-  silent: argv.silent,
-  outDir: argv.outdir ? resolve(argv.outdir) : resolve(dir, "../out")
-};
-
-exportApp(options);
