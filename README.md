@@ -1,5 +1,9 @@
 # FlyBook
-Just write markdown, Flybook will create your book
+Just write markdown, Flybook will create your book.
+
+`FlyBook` is a simple utility to generate static website. This is inspired by [funbook](https://funbook.js.org/) and [next.js export functionality](https://zeit.co/blog/next)
+
+Rewrited using by **React** and **React DOM Server**
 
 ## Goals
 This is the simplest way to generate static web site that look like
@@ -23,6 +27,7 @@ $ vi package.json
 
 $ npm run docs
 ```
+
 
 **globally**
 ```
@@ -55,6 +60,7 @@ $ npm install fly-book-style-solarized-dark
 $ fly-book docs --theme=solarized-dark
 ```
 - [ ] PDF, EPUB
+- [ ] i18n
 
 ## License
 MIT
