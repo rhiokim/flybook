@@ -1,0 +1,57 @@
+
+    <!DOCTYPE html>
+    <html>
+      <meta charset="UTF-8" />
+      <title>Github Gh Pages</title>
+      <meta
+        name="description"
+        content=
+      />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <link
+        href="//fonts.googleapis.com/css?family=Rubik|Unica+One"
+        rel="stylesheet"
+      />
+      <link rel="stylesheet" href="/fly-book/static/css/normalize.css" />
+      <link rel="stylesheet" href="/fly-book/static/css/flexboxgrid.min.css" />
+      <link rel="stylesheet" href="/fly-book/static/css/github-flavored-markdown.css" />
+      <link rel="stylesheet" href="/fly-book/static/css/main.css" />
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css" />
+      <body>
+        <div id="root"><div class="wrap container-fluid"><header class="site-header"><h1><a href="/fly-book/">fly-book</a></h1><nav class="nav-link"><a href="/fly-book/">Home</a><a href="https://github.com/rhiokim/fly-book">Github</a></nav></header><section class="main"><aside><div class="chap"><span class="chap-title">Advanced</span><ul><li class="active"><a href="/fly-book/advanced/github-gh-pages">Github Gh Pages</a></li><li class=""><a href="/fly-book/advanced/theme">Theme</a></li></ul></div><div class="chap"><span class="chap-title">Basic</span><ul><li class=""><a href="/fly-book/basic/getting-started">Getting Started</a></li><li class=""><a href="/fly-book/basic/install">Install</a></li></ul></div><div class="chap"><span class="chap-title">Examples</span><ul><li class=""><a href="/fly-book/examples/syntax-highlight">Syntax Highlight</a></li></ul></div></aside><article><div class="markdown-body"><h2 id="gh-pages"><a href="#gh-pages" aria-hidden="true"><span class="icon icon-link"></span></a>gh-pages</h2>
+<p>To deploy,</p>
+<h3 id="prerequsite"><a href="#prerequsite" aria-hidden="true"><span class="icon icon-link"></span></a>Prerequsite</h3>
+<p>Install two modules, `npm install flybook gh-pages --save-dev'</p>
+<h3 id="setting"><a href="#setting" aria-hidden="true"><span class="icon icon-link"></span></a>Setting</h3>
+<p><code>package.json</code></p>
+<pre><code class="hljs language-js">{
+  ...,
+  <span class="hljs-string">"scripts"</span>: {
+    <span class="hljs-string">"docs"</span>: <span class="hljs-string">"flybook docs --outdir=out"</span>,
+    <span class="hljs-string">"pages"</span>: <span class="hljs-string">"gh-pages -d out"</span>
+  }
+}</code></pre>
+<p>Open <code>https://[account].github.io/[project-name]</code>. It's done</p>
+<p>Actually <strong>FlyBook</strong> is not dedicated github.
+So it doesn't work well, because path of some assets will be broken with gh-pages on github</p>
+<p>No worry! you can fix easily</p>
+<h3 id="to-fix-wrong-path-of-assets"><a href="#to-fix-wrong-path-of-assets" aria-hidden="true"><span class="icon icon-link"></span></a>To Fix, wrong path of assets</h3>
+<p>Install one more NPM module</p>
+<pre><code>$ npm install replace --save-dev
+</code></pre>
+<p><code>package.json</code></p>
+<pre><code class="hljs language-js">{
+  ...,
+  <span class="hljs-string">"scripts"</span>: {
+    <span class="hljs-string">"docs"</span>: <span class="hljs-string">"flybook docs --outdir=out"</span>,
+    <span class="hljs-string">"pages"</span>: <span class="hljs-string">"npm run docs &#x26;&#x26; npm run fix:link &#x26;&#x26; npm run fix:static &#x26;&#x26; gh-pages -d out"</span>,
+    <span class="hljs-string">"fix:link"</span>: <span class="hljs-string">"replace '&#x3C;a href=\"/' '&#x3C;a href=\"/YOUR-PROJECT-NAME/' ./out -r -s --include='*.html'"</span>,
+    <span class="hljs-string">"fix:static"</span>: <span class="hljs-string">"replace '/fly-book/static/' '/YOUR-PROJECT-NAME/fly-book/static/' ./out -r -s --include='*.html'"</span>
+  }
+}</code></pre>
+<p>And then <code>npm run pages</code> and then open <code>https://[account].github.io/[project-name]</code> again</p>
+</div></article></section><footer>© 2017 <a href="https://fly-book.github.io/">Rhio Kim</a>. All rights reserved.</footer></div></div>
+      </body>
+    </html>
+  
