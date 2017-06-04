@@ -79,7 +79,6 @@ if (!(0, _fs.existsSync)(dir)) {
 // No table of contents file found
 if (!(0, _fs.existsSync)((0, _path.join)(dir, "toc.yml"))) {
   _inquirer2.default.prompt(questions).then(function (answer) {
-    console.log(answer);
     if (answer.toc === "" || answer.toc === "y") {
       (0, _toc.writeTOC)(dir);
       gen();

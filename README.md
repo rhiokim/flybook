@@ -24,6 +24,15 @@ docs
 |____index.md
 ```
 
+**globally**
+```
+$ npm i -g flybook
+$ cd /path/to/project
+
+$ flybook docs
+> FlyBook was generated at /Users/rhio/Works/my/fly-book/out
+```
+
 **with NPM Project**
 ```
 $ cd /path/to/project
@@ -42,13 +51,17 @@ $ vi package.json
 $ npm run docs
 ```
 
-**globally**
-```
-$ npm i -g flybook
-$ cd /path/to/project
+## Development
 
-$ flybook docs
+Turn on the auto build mode after `npm install`
 ```
+$ git clone git@github.com:rhiokim/flybook
+$ cd flybook
+$ npm install
+$ npm run build
+```
+
+You are able to see the notification with your code changes automatically
 
 ## TODO
 - [ ] Add style widget to change font style
@@ -56,11 +69,6 @@ $ flybook docs
   - using highlight.js provided cdnjs.com
 - [ ] Add `next` and `prev` link
 - [ ] Theme
-```bash
-$ cd your-project
-$ npm install fly-book-style-solarized-dark
-$ fly-book docs --theme=solarized-dark
-```
 - [ ] PDF, EPUB
 - [ ] i18n
 

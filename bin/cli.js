@@ -81,7 +81,6 @@ if (!existsSync(dir)) {
 // No table of contents file found
 if (!existsSync(join(dir, "toc.yml"))) {
   inquirer.prompt(questions).then(answer => {
-    console.log(answer);
     if (answer.toc === "" || answer.toc === "y") {
       writeTOC(dir);
       gen();
