@@ -29,7 +29,8 @@ const makeIndexPage = (docDir, outDir, routes) => {
   try {
     contents = mdLoader(join(docDir, "readme.md"));
   } catch (e) {
-    throw new Error(`No 'readme.md' file found in ${docDir}`);
+    console.log(`> No 'readme.md' file found in ${docDir}`);
+    process.exit(1);
   }
 
   /* gen new files */
@@ -67,6 +68,6 @@ module.exports = ({ docDir, outDir, slient }) => {
   });
 
   copy(join(__dirname, "../static"), `${outDir}/static`).then(result => {
-    console.log(`FlyBook was generated at ${outDir}`);
+    console.log(`> FlyBook was generated at ${outDir}`);
   });
 };
