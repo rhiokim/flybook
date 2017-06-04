@@ -24,14 +24,25 @@ const Html = (title, contents, routes) => {
 
 const makeIndexPage = (docDir, outDir, routes) => {
   let contents;
-  let html = Html(pkg.name, contents, routes);
+  let html;
 
-  try {
+  const loadIndex = docDir => {
     contents = mdLoader(join(docDir, "readme.md"));
-  } catch (e) {
-    console.log(`> No 'readme.md' file found in ${docDir}`);
-    process.exit(1);
+    return contents;
+  };
+
+  if (!existsSync(join(docDir, "readme.md"))) {
+    if (!existsSync(join(process.cwd(), "readme.md"))) {
+      console.log(`> No 'readme.md' file found in ${docDir} and project root`);
+      process.exit(1);
+    } else {
+      contents = loadIndex(process.cwd());
+    }
+  } else {
+    contents = loadIndex(docDir);
   }
+
+  html = Html(pkg.name, contents, routes);
 
   /* gen new files */
   writeFileSync(join(outDir, "index.html"), html, { encoding: "utf8" });
