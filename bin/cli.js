@@ -114,4 +114,7 @@ if (!existsSync(join(dir, "toc.yml"))) {
   }
 }
 
-updateNotifier({ pkg: pkg }).notify();
+const notifier = updateNotifier({ pkg });
+notifier.notify();
+
+// console.log(notifier.update);
