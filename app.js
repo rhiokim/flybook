@@ -11,7 +11,11 @@ import mdLoader from "./libs/md-loader";
 import _document from "./libs/_document";
 import App from "./pages/App";
 
-const pkg = require(`${process.cwd()}/package.json`);
+let pkg = { name: "FlyBook" };
+
+try {
+  pkg = require(`${process.cwd()}/package.json`);
+} catch (e) {}
 
 const Html = (title, contents, routes) => {
   return _document({

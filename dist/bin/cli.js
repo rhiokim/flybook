@@ -38,7 +38,8 @@ var argv = (0, _minimist2.default)(process.argv.slice(2), {
     h: "help",
     s: "silent",
     o: "outdir",
-    t: "toc"
+    t: "toc",
+    v: "version"
   },
   boolean: ["h"],
   default: {
@@ -47,8 +48,13 @@ var argv = (0, _minimist2.default)(process.argv.slice(2), {
   }
 });
 
+if (argv.version) {
+  console.log("Flybook v" + pkg.version);
+  process.exit(0);
+}
+
 if (argv.help || !argv._[0]) {
-  console.log("\n    Description\n      FlyBook is a simple utility to generate static website that look like online manual.\n\n    Usage\n      $ flybook <outdir> [options]\n      <outdir> represents where the compiled dist folder should go.\n\n    If no directory is provided, the 'out' folder will be created in the current directory.\n    You can set a custom folder in config https://rhiokim.github.io/flybook\n\n    Options\n      -h - list this help\n      -o - set the output dir (defaults to 'out')\n      -s - do not print any messages to console\n      -t - generate new toc.yml file\n  ");
+  console.log("\n    Description\n      FlyBook is a simple utility to generate static website that look like online manual.\n\n    Usage\n      $ flybook <outdir> [options]\n      <outdir> represents where the compiled dist folder should go.\n\n    If no directory is provided, the 'out' folder will be created in the current directory.\n    You can set a custom folder in config https://rhiokim.github.io/flybook\n\n    Options\n      -h - list this help\n      -v - version of FlyBook\n      -o - set the output dir (defaults to 'out')\n      -s - do not print any messages to console\n      -t - generate new toc.yml file\n  ");
   process.exit(0);
 }
 

@@ -21,7 +21,8 @@ const argv = parseArgs(process.argv.slice(2), {
     h: "help",
     s: "silent",
     o: "outdir",
-    t: "toc"
+    t: "toc",
+    v: "version"
   },
   boolean: ["h"],
   default: {
@@ -29,6 +30,11 @@ const argv = parseArgs(process.argv.slice(2), {
     o: null
   }
 });
+
+if (argv.version) {
+  console.log(`Flybook v${pkg.version}`);
+  process.exit(0);
+}
 
 if (argv.help || !argv._[0]) {
   console.log(
@@ -45,6 +51,7 @@ if (argv.help || !argv._[0]) {
 
     Options
       -h - list this help
+      -v - version of FlyBook
       -o - set the output dir (defaults to 'out')
       -s - do not print any messages to console
       -t - generate new toc.yml file
