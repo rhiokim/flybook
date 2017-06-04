@@ -13,13 +13,13 @@
         href="//fonts.googleapis.com/css?family=Rubik|Unica+One"
         rel="stylesheet"
       />
-      <link rel="stylesheet" href="/fly-book/static/css/normalize.css" />
-      <link rel="stylesheet" href="/fly-book/static/css/flexboxgrid.min.css" />
-      <link rel="stylesheet" href="/fly-book/static/css/github-flavored-markdown.css" />
-      <link rel="stylesheet" href="/fly-book/static/css/main.css" />
+      <link rel="stylesheet" href="/flybook/static/css/normalize.css" />
+      <link rel="stylesheet" href="/flybook/static/css/flexboxgrid.min.css" />
+      <link rel="stylesheet" href="/flybook/static/css/github-flavored-markdown.css" />
+      <link rel="stylesheet" href="/flybook/static/css/main.css" />
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css" />
       <body>
-        <div id="root"><div class="wrap container-fluid"><header class="site-header"><h1><a href="/fly-book/">flybook</a></h1><nav class="nav-link"><a href="/fly-book/">Home</a><a href="https://github.com/rhiokim/fly-book">Github</a></nav></header><section class="main"><aside><div class="chap"><span class="chap-title">Basic</span><ul><li class=""><a href="/fly-book/basic/getting-started">Getting Started</a></li><li class=""><a href="/fly-book/basic/install">Install</a></li></ul></div><div class="chap"><span class="chap-title">Advanced</span><ul><li class="active"><a href="/fly-book/advanced/github-gh-pages">Github Gh Pages</a></li><li class=""><a href="/fly-book/advanced/theme">Theme</a></li></ul></div><div class="chap"><span class="chap-title">Examples</span><ul><li class=""><a href="/fly-book/examples/syntax-highlight">Syntax Highlight</a></li></ul></div></aside><article><div class="markdown-body"><p>To deploy</p>
+        <div id="root"><div class="wrap container-fluid"><header class="site-header"><h1><a href="/flybook/">flybook</a></h1><nav class="nav-link"><a href="/flybook/">Home</a><a href="https://github.com/rhiokim/fly-book">Github</a></nav></header><section class="main"><aside><div class="chap"><span class="chap-title">Basic</span><ul><li class=""><a href="/flybook/basic/getting-started">Getting Started</a></li><li class=""><a href="/flybook/basic/install">Install</a></li></ul></div><div class="chap"><span class="chap-title">Advanced</span><ul><li class="active"><a href="/flybook/advanced/github-gh-pages">Github Gh Pages</a></li><li class=""><a href="/flybook/advanced/theme">Theme</a></li></ul></div><div class="chap"><span class="chap-title">Examples</span><ul><li class=""><a href="/flybook/examples/syntax-highlight">Syntax Highlight</a></li></ul></div></aside><article><div class="markdown-body"><p>To deploy</p>
 <h3 id="prerequsite"><a href="#prerequsite" aria-hidden="true"><span class="icon icon-link"></span></a>Prerequsite</h3>
 <p>Install two modules, <code>npm install flybook gh-pages --save-dev</code></p>
 <h3 id="setting"><a href="#setting" aria-hidden="true"><span class="icon icon-link"></span></a>Setting</h3>
@@ -46,7 +46,7 @@ So it doesn't work well, because path of some assets will be broken with gh-page
     <span class="hljs-string">"docs"</span>: <span class="hljs-string">"flybook docs --outdir=out"</span>,
     <span class="hljs-string">"pages"</span>: <span class="hljs-string">"npm run docs &#x26;&#x26; npm run fix:link &#x26;&#x26; npm run fix:static &#x26;&#x26; gh-pages -d out"</span>,
     <span class="hljs-string">"fix:link"</span>: <span class="hljs-string">"replace '&#x3C;a href=\"/' '&#x3C;a href=\"/YOUR-PROJECT-NAME/' ./out -r -s --include='*.html'"</span>,
-    <span class="hljs-string">"fix:static"</span>: <span class="hljs-string">"replace '/fly-book/static/' '/YOUR-PROJECT-NAME/fly-book/static/' ./out -r -s --include='*.html'"</span>
+    <span class="hljs-string">"fix:static"</span>: <span class="hljs-string">"replace '/flybook/static/' '/YOUR-PROJECT-NAME/flybook/static/' ./out -r -s --include='*.html'"</span>
   }
 }</code></pre>
 <p>And then <code>npm run pages</code> and then open <code>https://[account].github.io/[project-name]</code> again</p>
