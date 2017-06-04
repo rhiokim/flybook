@@ -3,8 +3,12 @@ import { resolve, join } from "path";
 import { existsSync } from "fs";
 import inquirer from "inquirer";
 import parseArgs from "minimist";
+import updateNotifier from "update-notifier";
 import exportApp from "../app";
 import { writeTOC, overwriteTOC } from "../libs/toc";
+import pkg from "./package.json";
+
+updateNotifier({ pkg: pkg }).notify();
 
 var questions = [
   {
