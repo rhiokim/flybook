@@ -8,8 +8,6 @@ import exportApp from "../app";
 import { writeTOC, overwriteTOC } from "../libs/toc";
 const pkg = require("../../package.json");
 
-updateNotifier({ pkg: pkg }).notify();
-
 var questions = [
   {
     type: "input",
@@ -32,16 +30,19 @@ const argv = parseArgs(process.argv.slice(2), {
   }
 });
 
-if (argv.help) {
+if (argv.help || !argv._[0]) {
   console.log(
     `
     Description
       Exports the static website for production deployment
+
     Usage
       $ flybook <outdir> [options]
-    <outdir> represents where the compiled dist folder should go.
+      <outdir> represents where the compiled dist folder should go.
+
     If no directory is provided, the 'out' folder will be created in the current directory.
     You can set a custom folder in config https://rhiokim.github.io/flybook
+
     Options
       -h - list this help
       -o - set the output dir (defaults to 'out')
@@ -105,3 +106,5 @@ if (!existsSync(join(dir, "toc.yml"))) {
     gen();
   }
 }
+
+updateNotifier({ pkg: pkg }).notify();

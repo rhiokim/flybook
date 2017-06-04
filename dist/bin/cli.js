@@ -27,8 +27,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var pkg = require("../../package.json");
 
-(0, _updateNotifier2.default)({ pkg: pkg }).notify();
-
 var questions = [{
   type: "input",
   name: "toc",
@@ -49,8 +47,8 @@ var argv = (0, _minimist2.default)(process.argv.slice(2), {
   }
 });
 
-if (argv.help) {
-  console.log("\n    Description\n      Exports the static website for production deployment\n    Usage\n      $ flybook <outdir> [options]\n    <outdir> represents where the compiled dist folder should go.\n    If no directory is provided, the 'out' folder will be created in the current directory.\n    You can set a custom folder in config https://rhiokim.github.io/flybook\n    Options\n      -h - list this help\n      -o - set the output dir (defaults to 'out')\n      -s - do not print any messages to console\n      -t - generate new toc.yml file\n  ");
+if (argv.help || !argv._[0]) {
+  console.log("\n    Description\n      Exports the static website for production deployment\n\n    Usage\n      $ flybook <outdir> [options]\n      <outdir> represents where the compiled dist folder should go.\n\n    If no directory is provided, the 'out' folder will be created in the current directory.\n    You can set a custom folder in config https://rhiokim.github.io/flybook\n\n    Options\n      -h - list this help\n      -o - set the output dir (defaults to 'out')\n      -s - do not print any messages to console\n      -t - generate new toc.yml file\n  ");
   process.exit(0);
 }
 
@@ -101,3 +99,5 @@ if (!(0, _fs.existsSync)((0, _path.join)(dir, "toc.yml"))) {
     gen();
   }
 }
+
+(0, _updateNotifier2.default)({ pkg: pkg }).notify();
