@@ -1,10 +1,8 @@
-## gh-pages
-
-To deploy,
+To deploy
 
 ### Prerequsite
 
-Install two modules, `npm install flybook gh-pages --save-dev'
+Install two modules, `npm install flybook gh-pages --save-dev`
 
 ### Setting
 

@@ -1,4 +1,4 @@
-import fs from "fs";
+import { writeFileSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import copy from "recursive-copy";
 import del from "del";
@@ -23,11 +23,17 @@ const Html = (title, contents, routes) => {
 };
 
 const makeIndexPage = (docDir, outDir, routes) => {
-  let contents = mdLoader(join(docDir, "index.md"));
+  let contents;
   let html = Html(pkg.name, contents, routes);
 
+  try {
+    contents = mdLoader(join(docDir, "readme.md"));
+  } catch (e) {
+    throw new Error(`No 'readme.md' file found in ${docDir}`);
+  }
+
   /* gen new files */
-  fs.writeFileSync(join(outDir, "index.html"), html, { encoding: "utf8" });
+  writeFileSync(join(outDir, "index.html"), html, { encoding: "utf8" });
 };
 
 module.exports = ({ docDir, outDir, slient }) => {
@@ -36,8 +42,10 @@ module.exports = ({ docDir, outDir, slient }) => {
   /* clean previous files */
   del.sync([`${outDir}/**/*`]);
 
+  // create output directory
   mkdirp.sync(outDir);
 
+  //
   makeIndexPage(docDir, outDir, routes);
 
   Object.keys(routes).map(key => {
@@ -54,7 +62,7 @@ module.exports = ({ docDir, outDir, slient }) => {
       mkdirp.sync(outputDir);
 
       /* gen new files */
-      fs.writeFileSync(outputFile, html, { encoding: "utf8" });
+      writeFileSync(outputFile, html, { encoding: "utf8" });
     });
   });
 

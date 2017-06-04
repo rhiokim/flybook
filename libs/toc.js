@@ -44,23 +44,10 @@ const save = (file, json) => {
 export const writeTOC = docDir => {
   const json = gen(docDir);
   const out = path.join(docDir, "toc.yml");
-  // const has = fs.existsSync(out);
-
-  // if (has && toc) {
-  //   console.log(
-  //     `> ${out} file exist.\nIf you want to overwrite please add --toc-overwrite option`
-  //   );
-  //   process.exit(1);
-  // }
-
-  // if (has && overwrite) {
-  //   del.sync([out]);
-  //   save(out, json);
-  //   return;
-  // }
 
   save(out, json);
 };
+
 export const overwriteTOC = docDir => {
   const json = gen(docDir);
   const out = path.join(docDir, "toc.yml");
@@ -68,24 +55,3 @@ export const overwriteTOC = docDir => {
   del.sync([out]);
   save(out, json);
 };
-
-// module.exports = (docDir, toc, overwrite) => {
-//   const json = gen(docDir);
-//   const out = path.join(docDir, "toc.yml");
-//   const has = fs.existsSync(out);
-
-//   if (has && toc) {
-//     console.log(
-//       `> ${out} file exist.\nIf you want to overwrite please add --toc-overwrite option`
-//     );
-//     process.exit(1);
-//   }
-
-//   if (has && overwrite) {
-//     del.sync([out]);
-//     save(out, json);
-//     return;
-//   }
-
-//   save(out, json);
-// };

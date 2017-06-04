@@ -48,6 +48,7 @@ export default async function(fly) {
   await fly.watch("components/*", "components");
   await fly.watch("libs/**/*.js", ["libs"]);
   await fly.watch("pages/**/*.js", "copy");
+  await fly.watch("app.js", "main");
 }
 
 export async function release(fly) {
