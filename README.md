@@ -10,6 +10,20 @@ This is the simplest way to generate static web site that look like
 
 ## How to use flybook
 
+For example, Flybook documentation structure look like below
+```
+$ ls /path/to/project/docs
+docs
+|____advanced
+| \____theme.md
+|____basic
+| \____getting-started.md
+| \____install.md
+|____examples
+| \____syntax-highlight.md
+|____index.md
+```
+
 **with NPM Project**
 ```
 $ cd /path/to/project
@@ -33,17 +47,6 @@ $ npm run docs
 ```
 $ npm i -g flybook
 $ cd /path/to/project
-$ ls [DOCUMENT_ROOT]
-[DOCUMENT_ROOT]
-|____advanced
-| \____theme.md
-|____basic
-| \____getting-started.md
-| \____install.md
-|____examples
-| \____syntax-highlight.md
-|____index.md
-
 
 $ flybook docs
 ```
