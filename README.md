@@ -6,7 +6,8 @@ Just write markdown, Flybook will create your book.
 Rewrited using by **React** and **React DOM Server**
 
 ## Goals
-This is the simplest way to generate static web site that look like
+Already we know that we can have a number of document tools to publish markdown docs.
+So flybook will keep in simplest way to generate static web site for writing the manual of project
 
 ## How to use flybook
 

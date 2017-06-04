@@ -58,6 +58,11 @@ if (argv.help || !argv._[0]) {
   process.exit(0);
 }
 
+if (argv._[0] === "/" || argv._[0] === "." || argv._[0] === "..") {
+  console.log("> FlyBook doesn't support as root directory (/), current working directory (./), and parent directory (../)");
+  process.exit(1);
+}
+
 var dir = (0, _path.resolve)(argv._[0] || ".");
 
 var gen = function gen() {

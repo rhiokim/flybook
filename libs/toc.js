@@ -1,5 +1,5 @@
 import fs from "fs";
-import path from "path";
+import { join, dirname, basename } from "path";
 import glob from "glob";
 import del from "del";
 import titleize from "titleize";
@@ -8,25 +8,27 @@ import unslug from "./unslug";
 
 const gen = docDir => {
   let toc = {};
-  const files = glob.sync(path.join(docDir, "**/*.md"));
+  const files = glob.sync(join(docDir, "**/*.md"), {
+    ignore: [join(docDir, "node_modules/**")]
+  });
 
   files.forEach(file => {
     file = file.replace(docDir + "/", "");
-    const dirname = unslug(path.dirname(file));
-    const basename = unslug(path.basename(file).replace(/\.md$/, ""));
+    const dir = unslug(dirname(file));
+    const name = unslug(basename(file).replace(/\.md$/, ""));
 
-    if (dirname === ".") {
+    if (dir === ".") {
       return;
     }
 
-    if (toc.hasOwnProperty(dirname)) {
-      toc[dirname] = Object.assign(toc[dirname], {
-        [titleize(basename)]: file
+    if (toc.hasOwnProperty(dir)) {
+      toc[dir] = Object.assign(toc[dir], {
+        [titleize(name)]: file
       });
     } else {
       toc = Object.assign(toc, {
-        [titleize(dirname)]: {
-          [titleize(basename)]: file
+        [titleize(dir)]: {
+          [titleize(name)]: file
         }
       });
     }
@@ -43,14 +45,14 @@ const save = (file, json) => {
 
 export const writeTOC = docDir => {
   const json = gen(docDir);
-  const out = path.join(docDir, "toc.yml");
+  const out = join(docDir, "toc.yml");
 
   save(out, json);
 };
 
 export const overwriteTOC = docDir => {
   const json = gen(docDir);
-  const out = path.join(docDir, "toc.yml");
+  const out = join(docDir, "toc.yml");
 
   del.sync([out]);
   save(out, json);
