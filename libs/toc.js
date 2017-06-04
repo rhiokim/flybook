@@ -1,10 +1,10 @@
-const fs = require("fs");
-const path = require("path");
-const glob = require("glob");
+import fs from "fs";
+import path from "path";
+import glob from "glob";
 import del from "del";
-const titleize = require("titleize");
-const yaml = require("json2yaml");
-const unslug = require("./unslug");
+import titleize from "titleize";
+import yaml from "json2yaml";
+import unslug from "./unslug";
 
 const gen = docDir => {
   let toc = {};
