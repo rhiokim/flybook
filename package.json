@@ -54,7 +54,7 @@
     "replace": "^0.3.0"
   },
   "bin": {
-    "fly-book": "./dist/bin/cli.js"
+    "flybook": "./dist/bin/cli.js"
   },
   "files": [
     "dist",
