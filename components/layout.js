@@ -37,7 +37,7 @@ module.exports = ({
 
     {pkg.author
       ? <footer>
-          © 2017 <a href={pkg.author.url}>{pkg.author.name}</a>
+          © 2017 <a href={pkg.author.url}>{pkg.author.name || pkg.name}</a>
           . All rights reserved.
         </footer>
       : null}

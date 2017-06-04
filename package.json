@@ -16,7 +16,7 @@
     "build": "fly",
     "release": "fly release",
     "serve": "serve out -s -p 5002",
-    "docs": "./dist/bin/cli.js docs",
+    "docs": "./dist/bin/cli.js docs --outdir=out",
     "pages": "npm run docs && npm run fix:link && npm run fix:static && gh-pages -d out",
     "fix:link": "replace '<a href=\"/' '<a href=\"/fly-book/' ./out -r -s --include='*.html'",
     "fix:static": "replace '/static/' '/fly-book/static/' ./out -r -s --include='*.html'"

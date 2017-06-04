@@ -66,7 +66,7 @@ const gen = () => {
   const options = {
     docDir: dir,
     silent: argv.silent,
-    outDir: argv.outdir ? resolve(argv.outdir) : resolve(dir, "../out")
+    outDir: argv.outdir ? resolve(argv.outdir) : resolve(dir, "../out_flybook")
   };
 
   exportApp(options);

@@ -64,7 +64,7 @@ var gen = function gen() {
   var options = {
     docDir: dir,
     silent: argv.silent,
-    outDir: argv.outdir ? (0, _path.resolve)(argv.outdir) : (0, _path.resolve)(dir, "../out")
+    outDir: argv.outdir ? (0, _path.resolve)(argv.outdir) : (0, _path.resolve)(dir, "../out_flybook")
   };
 
   (0, _app2.default)(options);
