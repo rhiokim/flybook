@@ -41,7 +41,8 @@
     "remark-highlight.js": "^5.0.0",
     "remark-html": "^6.0.0",
     "remark-slug": "^4.2.2",
-    "titleize": "^1.0.0"
+    "titleize": "^1.0.0",
+    "update-notifier": "^2.1.0"
   },
   "devDependencies": {
     "fly": "^2.0.6",

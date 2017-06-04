@@ -42,7 +42,6 @@ $ vi package.json
 $ npm run docs
 ```
 
-
 **globally**
 ```
 $ npm i -g flybook

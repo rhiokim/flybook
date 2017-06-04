@@ -6,7 +6,7 @@ import parseArgs from "minimist";
 import updateNotifier from "update-notifier";
 import exportApp from "../app";
 import { writeTOC, overwriteTOC } from "../libs/toc";
-import pkg from "./package.json";
+const pkg = require("../../package.json");
 
 updateNotifier({ pkg: pkg }).notify();
 
