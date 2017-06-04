@@ -34,7 +34,7 @@ if (argv.help || !argv._[0]) {
   console.log(
     `
     Description
-      Exports the static website for production deployment
+      FlyBook is a simple utility to generate static website that look like online manual.
 
     Usage
       $ flybook <outdir> [options]
