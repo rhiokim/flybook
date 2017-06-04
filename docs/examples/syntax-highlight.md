@@ -1,9 +1,12 @@
 ## Syntax Highlighting
 
-```css
-.chap {
+```js
+const foo = (arg1, arg2) => {
+  return arg1 + arg2
 }
+```
 
+```css
 .chap ul {
   margin-top: 0
 }

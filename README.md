@@ -63,6 +63,9 @@ $ npm run build
 
 You are able to see the notification with your code changes automatically
 
+* npm run release   // build
+* npm run docs      // generate a book with newest code
+
 ## TODO
 - [ ] Add style widget to change font style
 - [ ] Add style widget to change syntax highlight
