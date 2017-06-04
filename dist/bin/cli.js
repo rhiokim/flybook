@@ -42,7 +42,7 @@ var argv = (0, _minimist2.default)(process.argv.slice(2), {
 });
 
 if (argv.help) {
-  console.log("\n    Description\n      Exports the static website for production deployment\n    Usage\n      $ fly-book <outdir> [options]\n    <outdir> represents where the compiled dist folder should go.\n    If no directory is provided, the 'out' folder will be created in the current directory.\n    You can set a custom folder in config https://rhiokim.github.io/next-note\n    Options\n      -h - list this help\n      -o - set the output dir (defaults to 'out')\n      -s - do not print any messages to console\n      -t - generate new toc.yml file\n  ");
+  console.log("\n    Description\n      Exports the static website for production deployment\n    Usage\n      $ flybook <outdir> [options]\n    <outdir> represents where the compiled dist folder should go.\n    If no directory is provided, the 'out' folder will be created in the current directory.\n    You can set a custom folder in config https://rhiokim.github.io/flybook\n    Options\n      -h - list this help\n      -o - set the output dir (defaults to 'out')\n      -s - do not print any messages to console\n      -t - generate new toc.yml file\n  ");
   process.exit(0);
 }
 
@@ -72,7 +72,7 @@ if (!(0, _fs.existsSync)((0, _path.join)(dir, "toc.yml"))) {
       (0, _toc.writeTOC)(dir);
       gen();
     } else {
-      console.log("> No `toc.yml` file found. Did you mean to run `next-book` in the parent (`../`) directory?");
+      console.log("> No `toc.yml` file found. Did you mean to run `flybook` in the parent (`../`) directory?");
       process.exit(1);
     }
   });

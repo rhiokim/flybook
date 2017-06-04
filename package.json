@@ -1,5 +1,5 @@
 {
-  "name": "fly-book",
+  "name": "flybook",
   "version": "1.0.0",
   "main": "./dist/app.js",
   "license": "MIT",

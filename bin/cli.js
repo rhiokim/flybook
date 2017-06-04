@@ -34,10 +34,10 @@ if (argv.help) {
     Description
       Exports the static website for production deployment
     Usage
-      $ fly-book <outdir> [options]
+      $ flybook <outdir> [options]
     <outdir> represents where the compiled dist folder should go.
     If no directory is provided, the 'out' folder will be created in the current directory.
-    You can set a custom folder in config https://rhiokim.github.io/next-note
+    You can set a custom folder in config https://rhiokim.github.io/flybook
     Options
       -h - list this help
       -o - set the output dir (defaults to 'out')
@@ -75,7 +75,7 @@ if (!existsSync(join(dir, "toc.yml"))) {
       gen();
     } else {
       console.log(
-        "> No `toc.yml` file found. Did you mean to run `next-book` in the parent (`../`) directory?"
+        "> No `toc.yml` file found. Did you mean to run `flybook` in the parent (`../`) directory?"
       );
       process.exit(1);
     }

@@ -67,6 +67,6 @@ module.exports = ({ docDir, outDir, slient }) => {
   });
 
   copy(join(__dirname, "../static"), `${outDir}/static`).then(result => {
-    console.log(`Next Book was generated at ${outDir}`);
+    console.log(`FlyBook was generated at ${outDir}`);
   });
 };
