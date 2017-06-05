@@ -4,7 +4,7 @@ import { existsSync } from "fs";
 import inquirer from "inquirer";
 import parseArgs from "minimist";
 import updateNotifier from "update-notifier";
-import exportApp from "../app";
+import exportApp from "../libs/main";
 import { writeTOC, overwriteTOC } from "../libs/toc";
 const pkg = require("../../package.json");
 

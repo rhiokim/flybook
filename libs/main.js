@@ -6,10 +6,10 @@ import mkdirp from "mkdirp";
 import React, { createElement } from "react";
 import { renderToString, renderToStaticMarkup } from "react-dom/server";
 
-import routeTable from "./libs/routes";
-import mdLoader from "./libs/md-loader";
-import _document from "./libs/_document";
-import App from "./pages/App";
+import routeTable from "./routes";
+import mdLoader from "./md-loader";
+import _document from "./_document";
+import App from "../pages/App";
 
 let pkg = { name: "FlyBook" };
 
@@ -74,7 +74,7 @@ module.exports = ({ docDir, outDir, slient }) => {
       let contents = mdLoader(join(docDir, item[1]));
       let html = Html(item[0], contents, routes);
 
-      /* mkdir route dir */
+      /* mkdir output dir */
       mkdirp.sync(outputDir);
 
       /* gen new files */
@@ -82,7 +82,7 @@ module.exports = ({ docDir, outDir, slient }) => {
     });
   });
 
-  copy(join(__dirname, "../static"), `${outDir}/static`).then(result => {
+  copy(join(__dirname, "../../static"), `${outDir}/static`).then(result => {
     console.log(`> FlyBook was generated at ${outDir}`);
   });
 };

@@ -17,9 +17,9 @@ var _updateNotifier = require("update-notifier");
 
 var _updateNotifier2 = _interopRequireDefault(_updateNotifier);
 
-var _app = require("../app");
+var _main = require("../libs/main");
 
-var _app2 = _interopRequireDefault(_app);
+var _main2 = _interopRequireDefault(_main);
 
 var _toc = require("../libs/toc");
 
@@ -72,7 +72,7 @@ var gen = function gen() {
     outDir: argv.outdir ? (0, _path.resolve)(argv.outdir) : (0, _path.resolve)(dir, "../out_flybook")
   };
 
-  (0, _app2.default)(options);
+  (0, _main2.default)(options);
 };
 
 // Check if pages dir exists and warn if not

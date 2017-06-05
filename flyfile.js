@@ -1,7 +1,7 @@
 const notifier = require("node-notifier");
 
 export async function compile(fly) {
-  await fly.parallel(["main", "bin", "libs", "components"]);
+  await fly.parallel(["bin", "libs", "components"]);
 }
 
 export async function bin(fly, opts) {
@@ -10,11 +10,6 @@ export async function bin(fly, opts) {
     .babel()
     .target("dist/bin", { mode: "0755" });
   notify("Compiled binaries");
-}
-
-export async function main(fly, opts) {
-  await fly.source("app.js").babel().target("dist");
-  notify("Compiled main script");
 }
 
 export async function components(fly, opts) {
@@ -48,7 +43,6 @@ export default async function(fly) {
   await fly.watch("components/*", "components");
   await fly.watch("libs/**/*.js", ["libs"]);
   await fly.watch("pages/**/*.js", "copy");
-  await fly.watch("app.js", "main");
 }
 
 export async function release(fly) {
