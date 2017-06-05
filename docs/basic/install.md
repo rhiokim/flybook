@@ -1,1 +1,5 @@
-## install
+## Install
+
+```
+$ npm install flybook
+```

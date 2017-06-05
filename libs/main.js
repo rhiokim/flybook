@@ -52,7 +52,7 @@ const makeIndexPage = (docDir, outDir, routes) => {
   writeFileSync(join(outDir, "index.html"), html, { encoding: "utf8" });
 };
 
-module.exports = ({ docDir, outDir, slient }) => {
+module.exports = ({ docDir, outDir, silent }) => {
   const routes = routeTable(docDir);
 
   /* clean previous files */
@@ -79,6 +79,11 @@ module.exports = ({ docDir, outDir, slient }) => {
 
       /* gen new files */
       writeFileSync(outputFile, html, { encoding: "utf8" });
+
+      // log
+      if (!silent) {
+        console.log(">", key, "-", item[0], "\n", outputFile);
+      }
     });
   });
 
