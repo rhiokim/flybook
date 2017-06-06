@@ -1,4 +1,5 @@
-# ![](./media/logo.png)
+<p style="text-align:center;">![](./media/logo-250x250.png)</p>
+
 Just write markdown, Flybook will create your book.
 
 `FlyBook` is a simple utility to generate static website. This is inspired by [funbook](https://funbook.js.org/) and [next.js export functionality](https://zeit.co/blog/next)
