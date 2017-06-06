@@ -2,7 +2,12 @@ body {
   font-size: 1em;
   line-height: 1.6;
   font-weight: 400;
-  font-family: "Rubik", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Rubik",
+    "HelveticaNeue",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
   color: #222;
 }
 
@@ -22,7 +27,7 @@ a {
 }
 
 .site-header a {
-  color: #333
+  color: #333;
 }
 
 .nav-link {
@@ -77,7 +82,7 @@ footer {
   color: #6a737d;
 }
 
-.chap li.active a{
+.chap li.active a {
   color: #63a35c;
 }
 
@@ -96,7 +101,7 @@ h3:hover span.icon-link,
 h4:hover span.icon-link,
 h5:hover span.icon-link,
 h6:hover span.icon-link {
-  visibility: visible
+  visibility: visible;
 }
 
 .markdown-body h2 {

@@ -12,27 +12,27 @@ const gen = docDir => {
     ignore: [join(docDir, "node_modules/**")]
   });
 
-  files.forEach(file => {
-    file = file.replace(docDir + "/", "");
-    const dir = unslug(dirname(file));
-    const name = unslug(basename(file).replace(/\.md$/, ""));
+  files
+    .filter(file => {
+      return file !== join(docDir, "readme.md"); // basically readme.md is index file of directory
+    })
+    .forEach(file => {
+      file = file.replace(docDir + "/", "");
+      const dir = unslug(dirname(file));
+      const name = unslug(basename(file).replace(/\.md$/, ""));
 
-    if (dir === ".") {
-      return;
-    }
-
-    if (toc.hasOwnProperty(dir)) {
-      toc[dir] = Object.assign(toc[dir], {
-        [titleize(name)]: file
-      });
-    } else {
-      toc = Object.assign(toc, {
-        [titleize(dir)]: {
+      if (toc.hasOwnProperty(dir)) {
+        toc[dir] = Object.assign(toc[dir], {
           [titleize(name)]: file
-        }
-      });
-    }
-  });
+        });
+      } else {
+        toc = Object.assign(toc, {
+          [titleize(dir)]: {
+            [titleize(name)]: file
+          }
+        });
+      }
+    });
 
   return toc;
 };
