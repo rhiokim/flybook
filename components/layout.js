@@ -21,18 +21,21 @@ module.exports = ({
 
       <section className="main">
         <aside>
-          {Object.keys(toc).map((key, i) => (
-            <Chap title={key === "." ? "" : key} key={i}>
-              {Object.entries(toc[key]).map((item, i) => (
-                <li
-                  key={i}
-                  className={classnames({ active: title === item[0] })}
-                >
-                  <a href={`/${item[1].replace(/\.md/g, "")}`}>{item[0]}</a>
-                </li>
-              ))}
-            </Chap>
-          ))}
+          {Object.keys(toc).map((key, i) => {
+            let nav = toc[key];
+            return (
+              <Chap title={key === "." ? "" : key} key={i}>
+                {Object.keys(nav).map(label =>
+                  <li
+                    key={label}
+                    className={classnames({ active: title === label })}
+                  >
+                    <a href={`/${nav[label].replace(/\.md/g, "")}`}>{label}</a>
+                  </li>
+                )}
+              </Chap>
+            );
+          })}
         </aside>
         <article>
           {children}

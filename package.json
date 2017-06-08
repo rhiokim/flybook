@@ -12,6 +12,9 @@
     "email": "rhio.kim@gmail.com",
     "url": "https://fly-book.github.io/"
   },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "scripts": {
     "build": "fly",
     "release": "fly release",

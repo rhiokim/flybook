@@ -67,12 +67,14 @@ module.exports = ({ docDir, outDir, silent }) => {
   Object.keys(routes).map(key => {
     const subRoutes = routes[key];
 
-    Object.entries(subRoutes).map((item, i) => {
-      let outputDir = join(outDir, item[1].replace(/\.md$/, ""));
+    for (let title in subRoutes) {
+      let file = subRoutes[title];
+
+      let outputDir = join(outDir, file.replace(/\.md$/, ""));
       let outputFile = join(outputDir, "index.html");
 
-      let contents = mdLoader(join(docDir, item[1]));
-      let html = Html(item[0], contents, routes);
+      let contents = mdLoader(join(docDir, file));
+      let html = Html(title, contents, routes);
 
       /* mkdir output dir */
       mkdirp.sync(outputDir);
@@ -82,9 +84,27 @@ module.exports = ({ docDir, outDir, silent }) => {
 
       // log
       if (!silent) {
-        console.log(">", key, "-", item[0], "\n", outputFile);
+        console.log(">", key, "-", title, "\n", outputFile);
       }
-    });
+    }
+    // Object.entries(subRoutes).map((item, i) => {
+    //   let outputDir = join(outDir, item[1].replace(/\.md$/, ""));
+    //   let outputFile = join(outputDir, "index.html");
+
+    //   let contents = mdLoader(join(docDir, item[1]));
+    //   let html = Html(item[0], contents, routes);
+
+    //   /* mkdir output dir */
+    //   mkdirp.sync(outputDir);
+
+    //   /* gen new files */
+    //   writeFileSync(outputFile, html, { encoding: "utf8" });
+
+    //   // log
+    //   if (!silent) {
+    //     console.log(">", key, "-", item[0], "\n", outputFile);
+    //   }
+    // });
   });
 
   copy(join(__dirname, "../../static"), `${outDir}/static`).then(result => {
