@@ -72,6 +72,7 @@ var gen = function gen() {
     outDir: argv.outdir ? (0, _path.resolve)(argv.outdir) : (0, _path.resolve)(dir, "../out_flybook")
   };
 
+  (0, _toc.updateTOC)(dir);
   (0, _main2.default)(options);
 };
 

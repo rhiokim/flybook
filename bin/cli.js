@@ -5,14 +5,15 @@ import inquirer from "inquirer";
 import parseArgs from "minimist";
 import updateNotifier from "update-notifier";
 import exportApp from "../libs/main";
-import { writeTOC, overwriteTOC } from "../libs/toc";
+import { writeTOC, overwriteTOC, updateTOC } from "../libs/toc";
 const pkg = require("../../package.json");
 
 var questions = [
   {
     type: "input",
     name: "toc",
-    message: "There is no `toc.yml` which is table of contents file to generate static book\nPlease create table of content [Y/n]"
+    message:
+      "There is no `toc.yml` which is table of contents file to generate static book\nPlease create table of content [Y/n]"
   }
 ];
 
@@ -76,6 +77,7 @@ const gen = () => {
     outDir: argv.outdir ? resolve(argv.outdir) : resolve(dir, "../out_flybook")
   };
 
+  updateTOC(dir);
   exportApp(options);
 };
 
