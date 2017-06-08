@@ -1,6 +1,6 @@
 {
   "name": "flybook",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "./dist/app.js",
   "license": "MIT",
   "repository": {
@@ -32,7 +32,7 @@
     "deep-assign": "^2.0.0",
     "del": "^2.2.2",
     "glob": "^7.1.2",
-    "inquirer": "^3.0.6",
+    "inquirer": "^3.1.0",
     "js-yaml": "^3.8.4",
     "json2yaml": "^1.1.0",
     "minimist": "^1.2.0",
@@ -46,7 +46,7 @@
     "remark-html": "^6.0.0",
     "remark-slug": "^4.2.2",
     "titleize": "^1.0.0",
-    "update-notifier": "^2.1.0"
+    "update-notifier": "^2.2.0"
   },
   "devDependencies": {
     "fly": "^2.0.6",
