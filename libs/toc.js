@@ -3,8 +3,35 @@ import { join, dirname, basename } from "path";
 import glob from "glob";
 import del from "del";
 import titleize from "titleize";
-import yaml from "json2yaml";
+import j2y from "json2yaml";
+import yaml from "js-yaml";
+import deepAssign from "deep-assign";
 import unslug from "./unslug";
+
+const compare = (obj1, obj2) => {
+  return JSON.stringify(obj1) === JSON.stringify(obj2);
+};
+
+const clean = (source, dest) => {
+  for (let attr in source) {
+    if (typeof source[attr] !== "object") {
+      if (!dest.hasOwnProperty(attr)) {
+        delete source[attr];
+      }
+    } else {
+      clean(source[attr], dest[attr]);
+    }
+  }
+
+  return source;
+};
+
+const cleanMerge = (source, dest) => {
+  let deep = deepAssign({}, source, dest);
+  deep = clean(deep, dest);
+
+  return deep;
+};
 
 const gen = docDir => {
   let toc = {};
@@ -37,8 +64,24 @@ const gen = docDir => {
   return toc;
 };
 
+export const updateTOC = docDir => {
+  const tocFile = join(docDir, "toc.yml");
+  const has = fs.existsSync(tocFile);
+  const json = gen(docDir);
+
+  if (has) {
+    let toc = fs.readFileSync(tocFile, "utf8");
+    toc = yaml.safeLoad(toc);
+
+    if (!compare(toc, json)) {
+      save(tocFile, cleanMerge(toc, json));
+      return;
+    }
+  }
+};
+
 const save = (file, json) => {
-  fs.writeFileSync(file, yaml.stringify(json), {
+  fs.writeFileSync(file, j2y.stringify(json), {
     encoding: "utf8"
   });
 };

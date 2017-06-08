@@ -2,9 +2,10 @@
   .: 
     About: "About.md"
   Advanced: 
-    Github Gh Pages: "advanced/github-gh-pages.md"
+    Github Pages: "advanced/github-pages.md"
     Theme: "advanced/theme.md"
   Basic: 
+    Install: "basic/install.md"
     Getting Started: "basic/getting-started.md"
   Examples: 
     Syntax Highlight: "examples/syntax-highlight.md"
