@@ -87,24 +87,6 @@ module.exports = ({ docDir, outDir, silent }) => {
         console.log(">", key, "-", title, "\n", outputFile);
       }
     }
-    // Object.entries(subRoutes).map((item, i) => {
-    //   let outputDir = join(outDir, item[1].replace(/\.md$/, ""));
-    //   let outputFile = join(outputDir, "index.html");
-
-    //   let contents = mdLoader(join(docDir, item[1]));
-    //   let html = Html(item[0], contents, routes);
-
-    //   /* mkdir output dir */
-    //   mkdirp.sync(outputDir);
-
-    //   /* gen new files */
-    //   writeFileSync(outputFile, html, { encoding: "utf8" });
-
-    //   // log
-    //   if (!silent) {
-    //     console.log(">", key, "-", item[0], "\n", outputFile);
-    //   }
-    // });
   });
 
   copy(join(__dirname, "../../static"), `${outDir}/static`).then(result => {
