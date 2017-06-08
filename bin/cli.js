@@ -90,7 +90,7 @@ if (!existsSync(dir)) {
 // No table of contents file found
 if (!existsSync(join(dir, "toc.yml"))) {
   inquirer.prompt(questions).then(answer => {
-    if (answer.toc === "" || answer.toc === "y") {
+    if (answer.toc === "" || answer.toc.toLowerCase() === "y") {
       writeTOC(dir);
       gen();
     } else {
