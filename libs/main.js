@@ -14,7 +14,7 @@ import App from "../pages/App";
 let pkg = { name: "FlyBook" };
 
 try {
-  pkg = require(`${process.cwd()}/package.json`);
+  pkg = require(join(process.cwd(), "package.json"));
 } catch (e) {}
 
 const Html = (title, contents, routes) => {
@@ -56,7 +56,7 @@ module.exports = ({ docDir, outDir, silent }) => {
   const routes = routeTable(docDir);
 
   /* clean previous files */
-  del.sync([`${outDir}/**/*`]);
+  del.sync([join(outDir, "**/*")]);
 
   // create output directory
   mkdirp.sync(outDir);

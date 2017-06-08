@@ -8,10 +8,12 @@ import yaml from "js-yaml";
 import deepAssign from "deep-assign";
 import unslug from "./unslug";
 
+// simple object deep compare
 const compare = (obj1, obj2) => {
   return JSON.stringify(obj1) === JSON.stringify(obj2);
 };
 
+// remove properties of source object that dest object have not attribute
 const clean = (source, dest) => {
   for (let attr in source) {
     if (typeof source[attr] !== "object") {
@@ -26,6 +28,7 @@ const clean = (source, dest) => {
   return source;
 };
 
+// clean merge after deep assign
 const cleanMerge = (source, dest) => {
   let deep = deepAssign({}, source, dest);
   deep = clean(deep, dest);
@@ -44,7 +47,7 @@ const gen = docDir => {
       return file !== join(docDir, "readme.md"); // basically readme.md is index file of directory
     })
     .forEach(file => {
-      file = file.replace(docDir + "/", "");
+      file = file.replace(docDir, "").substr(1, file.length);
       const dir = unslug(dirname(file));
       const name = unslug(basename(file).replace(/\.md$/, ""));
 
