@@ -25,7 +25,7 @@ var _toc = require("../libs/toc");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var pkg = require("../../package.json");
+var pkg = require((0, _path.normalize)("../../package.json"));
 
 var questions = [{
   type: "input",
@@ -69,7 +69,7 @@ var gen = function gen() {
   var options = {
     docDir: dir,
     silent: argv.silent,
-    outDir: argv.outdir ? (0, _path.resolve)(argv.outdir) : (0, _path.resolve)(dir, "../out_flybook")
+    outDir: (0, _path.normalize)(argv.outdir ? (0, _path.resolve)(argv.outdir) : (0, _path.resolve)(dir, "..", "out_flybook"))
   };
 
   (0, _toc.updateTOC)(dir);

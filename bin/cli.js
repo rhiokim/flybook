@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-import { resolve, join } from "path";
+import { resolve, join, normalize } from "path";
 import { existsSync } from "fs";
 import inquirer from "inquirer";
 import parseArgs from "minimist";
 import updateNotifier from "update-notifier";
 import exportApp from "../libs/main";
 import { writeTOC, overwriteTOC, updateTOC } from "../libs/toc";
-const pkg = require("../../package.json");
+const pkg = require(normalize("../../package.json"));
 
 var questions = [
   {
@@ -74,10 +74,10 @@ const gen = () => {
   const options = {
     docDir: dir,
     silent: argv.silent,
-    outDir: argv.outdir ? resolve(argv.outdir) : resolve(dir, "../out_flybook")
+    outDir: normalize(argv.outdir ? resolve(argv.outdir) : resolve(dir, "..", "out_flybook"))
   };
 
-  updateTOC(dir);
+  updateTOC(dir)
   exportApp(options);
 };
 

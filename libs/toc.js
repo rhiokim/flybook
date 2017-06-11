@@ -1,5 +1,5 @@
 import fs from "fs";
-import { join, dirname, basename } from "path";
+import { join, normalize, dirname, basename } from "path";
 import glob from "glob";
 import del from "del";
 import titleize from "titleize";
@@ -38,11 +38,12 @@ const cleanMerge = (source, dest) => {
 
 const gen = docDir => {
   let toc = {};
-  const files = glob.sync(join(docDir, "**/*.md"), {
-    ignore: [join(docDir, "node_modules/**")]
+  const files = glob.sync(join(docDir, "**", "*.md"), {
+    ignore: [join(docDir, "node_modules","**")]
   });
 
   files
+    .map(file => normalize(file))
     .filter(file => {
       return file !== join(docDir, "readme.md"); // basically readme.md is index file of directory
     })
