@@ -18,6 +18,9 @@ v8.log
 .vscode
 yarn-*.log
 
+# flowtype
+flow-typed/npm
+
 #
 out
 out_flybook

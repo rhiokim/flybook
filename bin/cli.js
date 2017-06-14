@@ -23,14 +23,13 @@ const argv = parseArgs(process.argv.slice(2), {
     s: 'silent',
     o: 'outdir',
     t: 'toc',
-    d: 'dev',
-    v: 'version'
+    v: 'version',
+    p: 'prod'
   },
-  boolean: ['h', 'd'],
+  boolean: ['h', 'p', 's'],
   default: {
     s: false,
-    o: null,
-    d: true
+    o: null
   }
 })
 
@@ -76,7 +75,6 @@ const gen = () => {
   const options = {
     docDir: dir,
     silent: argv.silent,
-    dev: argv.dev,
     prod: argv.prod,
     outDir: normalize(argv.outdir ? resolve(argv.outdir) : resolve(dir, '..', 'out_flybook'))
   }

@@ -39,14 +39,13 @@ var argv = (0, _minimist2.default)(process.argv.slice(2), {
     s: 'silent',
     o: 'outdir',
     t: 'toc',
-    d: 'dev',
-    v: 'version'
+    v: 'version',
+    p: 'prod'
   },
-  boolean: ['h', 'd'],
+  boolean: ['h', 'p', 's'],
   default: {
     s: false,
-    o: null,
-    d: true
+    o: null
   }
 });
 
@@ -71,7 +70,6 @@ var gen = function gen() {
   var options = {
     docDir: dir,
     silent: argv.silent,
-    dev: argv.dev,
     prod: argv.prod,
     outDir: (0, _path.normalize)(argv.outdir ? (0, _path.resolve)(argv.outdir) : (0, _path.resolve)(dir, '..', 'out_flybook'))
   };

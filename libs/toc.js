@@ -1,3 +1,4 @@
+// @flow
 import fs from 'fs'
 import { join, normalize, dirname, basename } from 'path'
 import glob from 'glob'
@@ -9,12 +10,12 @@ import deepAssign from 'deep-assign'
 import unslug from './unslug'
 
 // simple object deep compare
-const compare = (obj1, obj2) => {
+const compare = (obj1: any, obj2: any) => {
   return JSON.stringify(obj1) === JSON.stringify(obj2)
 }
 
 // remove properties of source object that dest object have not attribute
-const clean = (source, dest) => {
+const clean = (source: any, dest: any) => {
   for (let attr in source) {
     if (typeof source[attr] !== 'object') {
       if (!dest.hasOwnProperty(attr)) {
@@ -29,14 +30,14 @@ const clean = (source, dest) => {
 }
 
 // clean merge after deep assign
-const cleanMerge = (source, dest) => {
+const cleanMerge = (source: any, dest: any) => {
   let deep = deepAssign({}, source, dest)
   deep = clean(deep, dest)
 
   return deep
 }
 
-const gen = docDir => {
+const gen = (docDir: string) => {
   let toc = {}
   const files = glob.sync(join(docDir, '**', '*.md'), {
     ignore: [join(docDir, 'node_modules', '**')]
@@ -68,7 +69,7 @@ const gen = docDir => {
   return toc
 }
 
-export const updateTOC = docDir => {
+export const updateTOC = (docDir: string) => {
   const tocFile = join(docDir, 'toc.yml')
   const has = fs.existsSync(tocFile)
   const json = gen(docDir)
@@ -83,20 +84,20 @@ export const updateTOC = docDir => {
   }
 }
 
-const save = (file, json) => {
+const save = (file: string, json: any) => {
   fs.writeFileSync(file, j2y.stringify(json), {
     encoding: 'utf8'
   })
 }
 
-export const writeTOC = docDir => {
+export const writeTOC = (docDir: string) => {
   const json = gen(docDir)
   const out = join(docDir, 'toc.yml')
 
   save(out, json)
 }
 
-export const overwriteTOC = docDir => {
+export const overwriteTOC = (docDir: string) => {
   const json = gen(docDir)
   const out = join(docDir, 'toc.yml')
 

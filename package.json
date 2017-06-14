@@ -18,6 +18,8 @@
   },
   "scripts": {
     "lint": "eslint --format=node_modules/eslint-formatter-pretty 'libs/**/*.@(js|jsx)'",
+    "flow": "flow",
+    "flow:coverage": "flow-coverage-report",
     "build": "fly",
     "release": "fly release",
     "serve": "serve out -s -p 5002",
@@ -62,6 +64,9 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.1.0",
+    "flow-bin": "^0.48.0",
+    "flow-coverage-report": "^0.3.0",
     "fly": "^2.0.6",
     "fly-babel": "^2.1.1",
     "fly-clear": "^1.0.1",
@@ -78,5 +83,15 @@
     "dist",
     "static",
     "index.js"
-  ]
+  ],
+  "flow-coverage-report": {
+    "includeGlob": [
+      "libs/**/*.js",
+      "components/**/*.js",
+      "pages/**/*.js"
+    ],
+    "type": [
+      "text"
+    ]
+  }
 }

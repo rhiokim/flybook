@@ -1,8 +1,9 @@
+// @flow
 import { readFileSync } from 'fs'
 import { join } from 'path'
 import { safeLoad } from 'js-yaml'
 
-module.exports = targetDir => {
+module.exports = (targetDir: string) => {
   let routes
   const file = join(targetDir, 'toc.yml')
 

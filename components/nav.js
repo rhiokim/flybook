@@ -1,4 +1,18 @@
+// @flow
 import React from 'react'
+
+type ILink = {
+  href: string;
+  key: string;
+  label: string;
+}
+
+type Props = {
+  homepage: string;
+  repository: {
+    url: string;
+  }
+}
 
 const links: ILink[] = [
 ].map((link: ILink, i: number) => {

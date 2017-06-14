@@ -1,8 +1,23 @@
+// @flow
 import React from 'react'
+import type {Children} from 'react'
 import classnames from 'classnames'
 
 import Nav from './nav'
 import Chap from './chap'
+
+type Props = {
+  children?: Children;
+  title: string;
+  className?: string;
+  toc: any;
+  pkg: any;
+  root: string;
+};
+
+type Nav = {
+  [key: string]: string
+}
 
 module.exports = ({
   children,
@@ -22,11 +37,11 @@ module.exports = ({
 
       <section className="main">
         <aside>
-          {Object.keys(toc).map((key, i) => {
-            let nav = toc[key]
+          {Object.keys(toc).map((key: string, i: number) => {
+            let nav: Nav = toc[key]
             return (
               <Chap title={key === '.' ? '' : key} key={i}>
-                {Object.keys(nav).map(label =>
+                {Object.keys(nav).map((label: string) =>
                   <li
                     key={label}
                     className={classnames({ active: title === label })}

@@ -1,0 +1,14 @@
+[ignore]
+.*/node_modules/*
+.*/__test__/.*
+
+[include]
+./libs/
+./components/
+./pages/
+
+[libs]
+./flow-typed/
+
+[options]
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe

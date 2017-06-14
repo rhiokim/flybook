@@ -1,3 +1,4 @@
+// @flow
 import { writeFileSync, existsSync } from 'fs'
 import { join, relative, sep } from 'path'
 import copy from 'recursive-copy'
@@ -12,13 +13,22 @@ import mdLoader from './md-loader'
 import _document from './_document'
 import App from '../pages/App'
 
+type Props = {
+  docDir: string;
+  outDir: string;
+  silent: boolean;
+  prod: boolean;
+}
+
 let pkg = { name: 'FlyBook', homepage: '' }
 
 try {
-  pkg = deepAssign(pkg, require(join(process.cwd(), 'package.json')))
+  // https://wietse.loves.engineering/ignore-a-flowtype-error-on-a-specific-line-14cdfa70a739
+  // $FlowFixMe
+  pkg = deepAssign(pkg, require(join(process.cwd(), 'package.json').toString()))
 } catch (e) {}
 
-const Html = (title, contents, root, routes) => {
+const Html = (title: string, contents: string = '', root: string, routes: any) => {
   return _document({
     title: title,
     root: root,
@@ -28,11 +38,11 @@ const Html = (title, contents, root, routes) => {
   })
 }
 
-const makeIndexPage = (docDir, outDir, routes) => {
-  let contents
-  let html
+const makeIndexPage = (docDir: string, outDir: string, routes: any) => {
+  let contents: string
+  let html: string
 
-  const loadIndex = docDir => {
+  const loadIndex = (docDir: string) => {
     contents = mdLoader(join(docDir, 'readme.md'))
     return contents
   }
@@ -54,15 +64,16 @@ const makeIndexPage = (docDir, outDir, routes) => {
   writeFileSync(join(outDir, 'index.html'), html, { encoding: 'utf8' })
 }
 
-module.exports = ({ docDir, outDir, silent, prod }) => {
+module.exports = ({ docDir, outDir, silent, prod }: Props) => {
   const routes = routeTable(docDir)
 
+  // if not production mode, homepage is '/' path
   if (!prod) {
     pkg.homepage = '/'
   }
 
   /* clean previous files */
-  del.sync([join(outDir, '**/*')])
+  del.sync([join(outDir, '**', '*')])
 
   // create output directory
   mkdirp.sync(outDir)

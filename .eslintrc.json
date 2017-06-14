@@ -15,5 +15,14 @@
     "standard",
     "standard-flow",
     "react-app"
-  ]
+  ],
+  "plugins": [
+    "flowtype",
+    "react"
+  ],
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": false
+    }
+  }
 }
