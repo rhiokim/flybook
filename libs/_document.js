@@ -1,8 +1,8 @@
-const defaultDescription = "";
-const defaultOGURL = "";
-const defaultOGImage = "";
+const defaultDescription = ''
+// const defaultOGURL = ''
+// const defaultOGImage = ''
 
-module.exports = ({ body, title, root = '', font = 'Rubik|Unica+One', codeStyle = 'solarized-dark'}) => {
+module.exports = ({ body, title, root = '', font = 'Rubik|Unica+One', codeStyle = 'solarized-dark' }) => {
   return `
     <!DOCTYPE html>
     <html>
@@ -27,5 +27,5 @@ module.exports = ({ body, title, root = '', font = 'Rubik|Unica+One', codeStyle 
         <div id="root">${body}</div>
       </body>
     </html>
-  `;
-};
+  `
+}

@@ -1,17 +1,17 @@
-import React from "react";
-import classnames from "classnames";
+import React from 'react'
+import classnames from 'classnames'
 
-import Nav from "./nav";
-import Chap from "./chap";
+import Nav from './nav'
+import Chap from './chap'
 
 module.exports = ({
   children,
-  title = "",
+  title = '',
   className,
   toc = {},
   pkg = {},
   root = ''
-}: Props) => {
+  }: Props) => {
   return (
     <div className={className}>
 
@@ -23,19 +23,19 @@ module.exports = ({
       <section className="main">
         <aside>
           {Object.keys(toc).map((key, i) => {
-            let nav = toc[key];
+            let nav = toc[key]
             return (
-              <Chap title={key === "." ? "" : key} key={i}>
+              <Chap title={key === '.' ? '' : key} key={i}>
                 {Object.keys(nav).map(label =>
                   <li
                     key={label}
                     className={classnames({ active: title === label })}
                   >
-                    <a href={`${root}${nav[label].replace(/\.md/g, "")}/index.html`}>{label}</a>
+                    <a href={`${root}${nav[label].replace(/\.md/g, '')}/index.html`}>{label}</a>
                   </li>
                 )}
               </Chap>
-            );
+            )
           })}
         </aside>
         <article>
@@ -47,8 +47,8 @@ module.exports = ({
         ? <footer>
             © 2017 <a href={pkg.author.url}>{pkg.author.name || pkg.name}</a>
             . All rights reserved.
-          </footer>
+        </footer>
         : null}
     </div>
-  );
-};
+  )
+}

@@ -1,2 +1,2 @@
-require("babel-register");
-module.exports = require("./lib/main");
+require('babel-register')
+module.exports = require('./lib/main')

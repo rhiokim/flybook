@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import Layout from "../components/layout";
+import Layout from '../components/layout'
 
 const App = ({ title, toc, contents, pkg, root }) => (
   <Layout className="wrap container-fluid" title={title} toc={toc} pkg={pkg} root={root}>
@@ -9,6 +9,6 @@ const App = ({ title, toc, contents, pkg, root }) => (
       dangerouslySetInnerHTML={{ __html: contents }}
     />
   </Layout>
-);
+)
 
-module.exports = App;
+module.exports = App

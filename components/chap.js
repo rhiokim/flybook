@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 module.exports = ({ children, title }: Props) => (
   <div className="chap">
@@ -7,4 +7,4 @@ module.exports = ({ children, title }: Props) => (
       {children}
     </ul>
   </div>
-);
+)

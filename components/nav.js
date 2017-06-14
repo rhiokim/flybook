@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 
 const links: ILink[] = [
 ].map((link: ILink, i: number) => {
-  link.key = `nav-link-${i}`;
-  return link;
-});
+  link.key = `nav-link-${i}`
+  return link
+})
 
 const Nav = ({ homepage = '', repository }: Props) => (
   <nav className="nav-link">
@@ -12,6 +12,6 @@ const Nav = ({ homepage = '', repository }: Props) => (
     {links.map(({ key, href, label }) => <a href={href} key={key}>{label}</a>)}
     <a href={repository.url}>Github</a>
   </nav>
-);
+)
 
-module.exports = Nav;
+module.exports = Nav

@@ -1,42 +1,42 @@
 #!/usr/bin/env node
-import { resolve, join, normalize } from "path";
-import { existsSync } from "fs";
-import inquirer from "inquirer";
-import parseArgs from "minimist";
-import updateNotifier from "update-notifier";
-import exportApp from "../libs/main";
-import { writeTOC, overwriteTOC, updateTOC } from "../libs/toc";
-const pkg = require(normalize("../../package.json"));
+import { resolve, join, normalize } from 'path'
+import { existsSync } from 'fs'
+import inquirer from 'inquirer'
+import parseArgs from 'minimist'
+import updateNotifier from 'update-notifier'
+import exportApp from '../libs/main'
+import { writeTOC, overwriteTOC, updateTOC } from '../libs/toc'
+const pkg = require(normalize('../../package.json'))
 
 var questions = [
   {
-    type: "input",
-    name: "toc",
+    type: 'input',
+    name: 'toc',
     message:
-      "There is no `toc.yml` which is table of contents file to generate static book\nPlease create table of content [Y/n]"
+      'There is no `toc.yml` which is table of contents file to generate static book\nPlease create table of content [Y/n]'
   }
-];
+]
 
 const argv = parseArgs(process.argv.slice(2), {
   alias: {
-    h: "help",
-    s: "silent",
-    o: "outdir",
-    t: "toc",
-    d: "dev",
-    v: "version"
+    h: 'help',
+    s: 'silent',
+    o: 'outdir',
+    t: 'toc',
+    d: 'dev',
+    v: 'version'
   },
-  boolean: ["h", "d"],
+  boolean: ['h', 'd'],
   default: {
     s: false,
     o: null,
     d: true
   }
-});
+})
 
 if (argv.version) {
-  console.log(`Flybook v${pkg.version}`);
-  process.exit(0);
+  console.log(`Flybook v${pkg.version}`)
+  process.exit(0)
 }
 
 if (argv.help || !argv._[0]) {
@@ -59,18 +59,18 @@ if (argv.help || !argv._[0]) {
       -s - do not print any messages to console
       -t - generate new toc.yml file
   `
-  );
-  process.exit(0);
+  )
+  process.exit(0)
 }
 
-if (argv._[0] === "/" || argv._[0] === "." || argv._[0] === "..") {
+if (argv._[0] === '/' || argv._[0] === '.' || argv._[0] === '..') {
   console.log(
     "> FlyBook doesn't support as root directory (/), current working directory (./), and parent directory (../)"
-  );
-  process.exit(1);
+  )
+  process.exit(1)
 }
 
-const dir = resolve(argv._[0] || ".");
+const dir = resolve(argv._[0] || '.')
 
 const gen = () => {
   const options = {
@@ -78,55 +78,55 @@ const gen = () => {
     silent: argv.silent,
     dev: argv.dev,
     prod: argv.prod,
-    outDir: normalize(argv.outdir ? resolve(argv.outdir) : resolve(dir, "..", "out_flybook"))
-  };
+    outDir: normalize(argv.outdir ? resolve(argv.outdir) : resolve(dir, '..', 'out_flybook'))
+  }
 
   updateTOC(dir)
-  exportApp(options);
-};
+  exportApp(options)
+}
 
 // Check if pages dir exists and warn if not
 if (!existsSync(dir)) {
-  console.log(`> No such directory exists as the documentation root: ${dir}`);
-  process.exit(1);
+  console.log(`> No such directory exists as the documentation root: ${dir}`)
+  process.exit(1)
 }
 
 // No table of contents file found
-if (!existsSync(join(dir, "toc.yml"))) {
+if (!existsSync(join(dir, 'toc.yml'))) {
   inquirer.prompt(questions).then(answer => {
-    if (answer.toc === "" || answer.toc.toLowerCase() === "y") {
-      writeTOC(dir);
-      gen();
+    if (answer.toc === '' || answer.toc.toLowerCase() === 'y') {
+      writeTOC(dir)
+      gen()
     } else {
       console.log(
-        "> No `toc.yml` file found. Did you mean to run `flybook` in the parent (`../`) directory?"
-      );
-      process.exit(1);
+        '> No `toc.yml` file found. Did you mean to run `flybook` in the parent (`../`) directory?'
+      )
+      process.exit(1)
     }
-  });
+  })
 } else {
   // `toc.yml` file found, but wannt renew
   if (argv.toc) {
     inquirer
       .prompt([
         {
-          type: "input",
-          name: "toc",
-          message: "`toc.yml` file found. Overwrite? [y/N]"
+          type: 'input',
+          name: 'toc',
+          message: '`toc.yml` file found. Overwrite? [y/N]'
         }
       ])
       .then(answer => {
-        if (answer.toc === "y") {
-          overwriteTOC(dir);
+        if (answer.toc === 'y') {
+          overwriteTOC(dir)
         }
-        gen();
-      });
+        gen()
+      })
   } else {
-    gen();
+    gen()
   }
 }
 
-const notifier = updateNotifier({ pkg });
-notifier.notify();
+const notifier = updateNotifier({ pkg })
+notifier.notify()
 
 // console.log(notifier.update);
