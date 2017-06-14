@@ -13,16 +13,40 @@
         href="//fonts.googleapis.com/css?family=Rubik|Unica+One"
         rel="stylesheet"
       />
-      <link rel="stylesheet" href="/flybook/static/css/normalize.css" />
-      <link rel="stylesheet" href="/flybook/static/css/flexboxgrid.min.css" />
-      <link rel="stylesheet" href="/flybook/static/css/github-flavored-markdown.css" />
-      <link rel="stylesheet" href="/flybook/static/css/main.css" />
+      <link rel="stylesheet" href="../../static/css/normalize.css" />
+      <link rel="stylesheet" href="../../static/css/flexboxgrid.min.css" />
+      <link rel="stylesheet" href="../../static/css/github-flavored-markdown.css" />
+      <link rel="stylesheet" href="../../static/css/main.css" />
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css" />
       <body>
-        <div id="root"><div class="wrap container-fluid"><header class="site-header"><h1><a href="/flybook/">flybook</a></h1><nav class="nav-link"><a href="/flybook/">Home</a><a href="https://github.com/rhiokim/fly-book">Github</a></nav></header><section class="main"><aside><div class="chap"><span class="chap-title">Basic</span><ul><li class=""><a href="/flybook/basic/getting-started">Getting Started</a></li><li class=""><a href="/flybook/basic/install">Install</a></li></ul></div><div class="chap"><span class="chap-title">Advanced</span><ul><li class=""><a href="/flybook/advanced/github-gh-pages">Github Gh Pages</a></li><li class=""><a href="/flybook/advanced/theme">Theme</a></li></ul></div><div class="chap"><span class="chap-title">Examples</span><ul><li class="active"><a href="/flybook/examples/syntax-highlight">Syntax Highlight</a></li></ul></div></aside><article><div class="markdown-body"><h2 id="syntax-highlighting"><a href="#syntax-highlighting" aria-hidden="true"><span class="icon icon-link"></span></a>Syntax Highlighting</h2>
+        <div id="root"><div class="wrap container-fluid"><header class="site-header"><h1><a href="/">flybook</a></h1><nav class="nav-link"><a href="/">Home</a><a href="https://github.com/rhiokim/fly-book">Github</a></nav></header><section class="main"><aside><div class="chap"><span class="chap-title"></span><ul><li class=""><a href="../../About/index.html">About</a></li></ul></div><div class="chap"><span class="chap-title">Advanced</span><ul><li class=""><a href="../../advanced/github-pages/index.html">Github Pages</a></li><li class=""><a href="../../advanced/theme/index.html">Theme</a></li><li class=""><a href="../../advanced/production/index.html">Production</a></li></ul></div><div class="chap"><span class="chap-title">Basic</span><ul><li class=""><a href="../../basic/getting-started/index.html">Getting Started</a></li><li class=""><a href="../../basic/configuration/index.html">Configuration</a></li></ul></div><div class="chap"><span class="chap-title">Examples</span><ul><li class="active"><a href="../../examples/syntax-highlight/index.html">Syntax Highlight</a></li></ul></div></aside><article><div class="markdown-body"><h2 id="syntax-highlighting"><a href="#syntax-highlighting" aria-hidden="true"><span class="icon icon-link"></span></a>Syntax Highlighting</h2>
+<ul>
+<li>Javascript</li>
+</ul>
+<pre><code>```js
+const foo = (arg1, arg2) => {
+  return arg1 + arg2
+}
+```
+</code></pre>
 <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> foo = <span class="hljs-function">(<span class="hljs-params">arg1, arg2</span>) =></span> {
   <span class="hljs-keyword">return</span> arg1 + arg2
 }</code></pre>
+<ul>
+<li>CSS</li>
+</ul>
+<pre><code>```css
+.chap ul {
+  margin-top: 0
+}
+
+.chap-title {
+  font-size: 18px;
+  color: #333;
+  font-weight: 700;
+}
+```
+</code></pre>
 <pre><code class="hljs language-css"><span class="hljs-selector-class">.chap</span> <span class="hljs-selector-tag">ul</span> {
   <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0</span>
 }
