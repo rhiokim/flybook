@@ -9,14 +9,15 @@ module.exports = ({
   title = "",
   className,
   toc = {},
-  pkg = {}
+  pkg = {},
+  root = ''
 }: Props) => {
   return (
     <div className={className}>
 
       <header className="site-header">
-        <h1><a href="/">{pkg.name}</a></h1>
-        <Nav {...pkg.repository} />
+        <h1><a href={pkg.homepage}>{pkg.name}</a></h1>
+        <Nav {...pkg} />
       </header>
 
       <section className="main">
@@ -30,7 +31,7 @@ module.exports = ({
                     key={label}
                     className={classnames({ active: title === label })}
                   >
-                    <a href={`/${nav[label].replace(/\.md/g, "")}`}>{label}</a>
+                    <a href={`${root}${nav[label].replace(/\.md/g, "")}/index.html`}>{label}</a>
                   </li>
                 )}
               </Chap>

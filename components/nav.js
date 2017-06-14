@@ -1,16 +1,16 @@
 import React from "react";
 
 const links: ILink[] = [
-  { href: "/", label: "Home" }
 ].map((link: ILink, i: number) => {
   link.key = `nav-link-${i}`;
   return link;
 });
 
-const Nav = ({ url, type }: Props) => (
+const Nav = ({ homepage = '', repository }: Props) => (
   <nav className="nav-link">
+    <a href={homepage}>Home</a>
     {links.map(({ key, href, label }) => <a href={href} key={key}>{label}</a>)}
-    <a href={url}>Github</a>
+    <a href={repository.url}>Github</a>
   </nav>
 );
 

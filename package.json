@@ -3,6 +3,7 @@
   "version": "1.0.11",
   "main": "./dist/app.js",
   "license": "MIT",
+  "homepage": "https://rhiokim.github.io/flybook",
   "repository": {
     "url": "https://github.com/rhiokim/fly-book",
     "type": "git"
@@ -20,9 +21,8 @@
     "release": "fly release",
     "serve": "serve out -s -p 5002",
     "docs": "./dist/bin/cli.js docs --outdir=out",
-    "pages": "npm run docs && gh-pages -d out",
-    "fix:link": "replace '<a href=\"/' '<a href=\"/flybook/' ./out -r -s --include='*.html'",
-    "fix:static": "replace '/static/' '/flybook/static/' ./out -r -s --include='*.html'"
+    "docs:prod": "./dist/bin/cli.js docs --outdir=out --prod",
+    "pages": "npm run docs:prod && gh-pages -d out"
   },
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
@@ -64,7 +64,6 @@
   "files": [
     "dist",
     "static",
-    "app.js",
     "index.js"
   ]
 }

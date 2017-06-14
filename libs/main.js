@@ -3,6 +3,7 @@ import { join, dirname, relative, sep } from "path";
 import copy from "recursive-copy";
 import del from "del";
 import mkdirp from "mkdirp";
+import deepAssign from 'deep-assign';
 import React, { createElement } from "react";
 import { renderToString, renderToStaticMarkup } from "react-dom/server";
 
@@ -11,10 +12,10 @@ import mdLoader from "./md-loader";
 import _document from "./_document";
 import App from "../pages/App";
 
-let pkg = { name: "FlyBook" };
+let pkg = { name: "FlyBook", homepage: "" };
 
 try {
-  pkg = require(join(process.cwd(), "package.json"));
+  pkg = deepAssign(pkg, require(join(process.cwd(), "package.json")));
 } catch (e) {}
 
 const Html = (title, contents, root, routes) => {
@@ -22,7 +23,7 @@ const Html = (title, contents, root, routes) => {
     title: title,
     root: root,
     body: renderToStaticMarkup(
-      createElement(App, { title, contents, toc: routes, pkg })
+      createElement(App, { title, contents, toc: routes, pkg, root })
     )
   });
 };
@@ -53,8 +54,12 @@ const makeIndexPage = (docDir, outDir, routes) => {
   writeFileSync(join(outDir, "index.html"), html, { encoding: "utf8" });
 };
 
-module.exports = ({ docDir, outDir, silent }) => {
+module.exports = ({ docDir, outDir, silent, prod }) => {
   const routes = routeTable(docDir);
+
+  if (!prod) {
+    pkg.homepage = '/'
+  }
 
   /* clean previous files */
   del.sync([join(outDir, "**/*")]);
