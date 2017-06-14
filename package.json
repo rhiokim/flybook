@@ -20,7 +20,7 @@
     "release": "fly release",
     "serve": "serve out -s -p 5002",
     "docs": "./dist/bin/cli.js docs --outdir=out",
-    "pages": "npm run docs && npm run fix:link && npm run fix:static && gh-pages -d out",
+    "pages": "npm run docs && gh-pages -d out",
     "fix:link": "replace '<a href=\"/' '<a href=\"/flybook/' ./out -r -s --include='*.html'",
     "fix:static": "replace '/static/' '/flybook/static/' ./out -r -s --include='*.html'"
   },

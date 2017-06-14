@@ -1,5 +1,5 @@
 import { writeFileSync, existsSync } from "fs";
-import { join, dirname } from "path";
+import { join, dirname, relative, sep } from "path";
 import copy from "recursive-copy";
 import del from "del";
 import mkdirp from "mkdirp";
@@ -17,9 +17,10 @@ try {
   pkg = require(join(process.cwd(), "package.json"));
 } catch (e) {}
 
-const Html = (title, contents, routes) => {
+const Html = (title, contents, root, routes) => {
   return _document({
     title: title,
+    root: root,
     body: renderToStaticMarkup(
       createElement(App, { title, contents, toc: routes, pkg })
     )
@@ -46,7 +47,7 @@ const makeIndexPage = (docDir, outDir, routes) => {
     contents = loadIndex(docDir);
   }
 
-  html = Html(pkg.name, contents, routes);
+  html = Html(pkg.name, contents, '', routes);
 
   /* gen new files */
   writeFileSync(join(outDir, "index.html"), html, { encoding: "utf8" });
@@ -74,7 +75,7 @@ module.exports = ({ docDir, outDir, silent }) => {
       let outputFile = join(outputDir, "index.html");
 
       let contents = mdLoader(join(docDir, file));
-      let html = Html(title, contents, routes);
+      let html = Html(title, contents, relative(outputDir, outDir)+sep, routes);
 
       /* mkdir output dir */
       mkdirp.sync(outputDir);
@@ -89,7 +90,7 @@ module.exports = ({ docDir, outDir, silent }) => {
     }
   });
 
-  copy(join(__dirname, "../../static"), `${outDir}/static`).then(result => {
+  copy(join(__dirname, "..", "..", "static"), join(outDir, "static")).then(result => {
     console.log(`> FlyBook was generated at ${outDir}`);
   });
 };

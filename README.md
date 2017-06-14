@@ -26,7 +26,7 @@ docs
 | \____install.md
 |____examples
 | \____syntax-highlight.md
-|____index.md
+|____readme.md
 ```
 
 **globally**
