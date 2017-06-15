@@ -1,22 +1,38 @@
 // @flow
 import React from 'react'
-import type {Children} from 'react'
+import type { Children } from 'react'
 import classnames from 'classnames'
 
 import Nav from './nav'
 import Chap from './chap'
 
-type Props = {
-  children?: Children;
-  title: string;
-  className?: string;
-  toc: any;
-  pkg: any;
-  root: string;
-};
-
-type Nav = {
+type NavItem = Object & {
   [key: string]: string
+}
+
+type Author = {
+  url?: string,
+  name?: string
+}
+
+type Repository = {
+  url?: string
+}
+
+type Pkg = {
+  name: string,
+  homepage?: string,
+  author?: Author,
+  repository?: Repository
+}
+
+type Props = {
+  children?: Children,
+  title: string,
+  className?: string,
+  toc: NavItem,
+  pkg: Pkg,
+  root: string
 }
 
 module.exports = ({
@@ -24,7 +40,7 @@ module.exports = ({
   title = '',
   className,
   toc = {},
-  pkg = {},
+  pkg,
   root = ''
   }: Props) => {
   return (
@@ -38,7 +54,7 @@ module.exports = ({
       <section className="main">
         <aside>
           {Object.keys(toc).map((key: string, i: number) => {
-            let nav: Nav = toc[key]
+            let nav: NavItem = toc[key]
             return (
               <Chap title={key === '.' ? '' : key} key={i}>
                 {Object.keys(nav).map((label: string) =>
@@ -46,7 +62,14 @@ module.exports = ({
                     key={label}
                     className={classnames({ active: title === label })}
                   >
-                    <a href={`${root}${nav[label].replace(/\.md/g, '')}/index.html`}>{label}</a>
+                    <a
+                      href={`${root}${nav[label].replace(
+                        /\.md/g,
+                        ''
+                      )}/index.html`}
+                    >
+                      {label}
+                    </a>
                   </li>
                 )}
               </Chap>

@@ -9,13 +9,17 @@ import yaml from 'js-yaml'
 import deepAssign from 'deep-assign'
 import unslug from './unslug'
 
+type Obj = {
+  [key: string]: any
+}
+
 // simple object deep compare
-const compare = (obj1: any, obj2: any) => {
+const compare = (obj1: Obj, obj2: Obj) => {
   return JSON.stringify(obj1) === JSON.stringify(obj2)
 }
 
 // remove properties of source object that dest object have not attribute
-const clean = (source: any, dest: any) => {
+const clean = (source: Obj, dest: Obj) => {
   for (let attr in source) {
     if (typeof source[attr] !== 'object') {
       if (!dest.hasOwnProperty(attr)) {
@@ -30,7 +34,7 @@ const clean = (source: any, dest: any) => {
 }
 
 // clean merge after deep assign
-const cleanMerge = (source: any, dest: any) => {
+const cleanMerge = (source: Obj, dest: Obj) => {
   let deep = deepAssign({}, source, dest)
   deep = clean(deep, dest)
 
@@ -38,8 +42,8 @@ const cleanMerge = (source: any, dest: any) => {
 }
 
 const gen = (docDir: string) => {
-  let toc = {}
-  const files = glob.sync(join(docDir, '**', '*.md'), {
+  let toc: Obj = {}
+  const files: string[] = glob.sync(join(docDir, '**', '*.md'), {
     ignore: [join(docDir, 'node_modules', '**')]
   })
 
@@ -50,8 +54,8 @@ const gen = (docDir: string) => {
     })
     .forEach(file => {
       file = file.replace(docDir, '').substr(1, file.length)
-      const dir = unslug(dirname(file))
-      const name = unslug(basename(file).replace(/\.md$/, ''))
+      const dir: string = unslug(dirname(file))
+      const name: string = unslug(basename(file).replace(/\.md$/, ''))
 
       if (toc.hasOwnProperty(dir)) {
         toc[dir] = Object.assign(toc[dir], {
@@ -76,15 +80,15 @@ export const updateTOC = (docDir: string) => {
 
   if (has) {
     let toc = fs.readFileSync(tocFile, 'utf8')
-    toc = yaml.safeLoad(toc)
+    let tocJson: Obj = yaml.safeLoad(toc)
 
-    if (!compare(toc, json)) {
-      save(tocFile, cleanMerge(toc, json))
+    if (!compare(tocJson, json)) {
+      save(tocFile, cleanMerge(tocJson, json))
     }
   }
 }
 
-const save = (file: string, json: any) => {
+const save = (file: string, json: Obj) => {
   fs.writeFileSync(file, j2y.stringify(json), {
     encoding: 'utf8'
   })

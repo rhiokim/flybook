@@ -24,5 +24,10 @@
     "flowtype": {
       "onlyFilesWithFlowAnnotation": false
     }
+  },
+  "rules": {
+    "import/no-webpack-loader-syntax": "off",
+    "import/first": "off",
+    "standard/no-callback-literal": "off"
   }
 }

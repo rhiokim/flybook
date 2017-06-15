@@ -1,8 +1,23 @@
+// @flow
 const defaultDescription = ''
 // const defaultOGURL = ''
 // const defaultOGImage = ''
 
-module.exports = ({ body, title, root = '', font = 'Rubik|Unica+One', codeStyle = 'solarized-dark' }) => {
+type Props = {
+  body: string,
+  title: string,
+  root: string,
+  font: string,
+  codeStyle: string
+}
+
+module.exports = ({
+  body,
+  title,
+  root = '',
+  font = 'Rubik|Unica+One',
+  codeStyle = 'solarized-dark'
+  }: Props) => {
   return `
     <!DOCTYPE html>
     <html>

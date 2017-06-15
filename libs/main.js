@@ -14,13 +14,21 @@ import _document from './_document'
 import App from '../pages/App'
 
 type Props = {
-  docDir: string;
-  outDir: string;
-  silent: boolean;
-  prod: boolean;
+  docDir: string,
+  outDir: string,
+  silent: boolean,
+  prod: boolean,
+  font?: string,
+  codeStyle?: string
 }
 
-let pkg = { name: 'FlyBook', homepage: '' }
+let pkg = {
+  name: 'Flybook',
+  description: 'Flybook',
+  homepage: '',
+  author: {},
+  repository: {}
+}
 
 try {
   // https://wietse.loves.engineering/ignore-a-flowtype-error-on-a-specific-line-14cdfa70a739
@@ -28,10 +36,19 @@ try {
   pkg = deepAssign(pkg, require(join(process.cwd(), 'package.json').toString()))
 } catch (e) {}
 
-const Html = (title: string, contents: string = '', root: string, routes: any) => {
+const Html = (
+  title: string,
+  contents: string = '',
+  root: string,
+  routes: any,
+  font: string,
+  codeStyle: string
+) => {
   return _document({
-    title: title,
-    root: root,
+    title,
+    root,
+    font,
+    codeStyle,
     body: renderToStaticMarkup(
       createElement(App, { title, contents, toc: routes, pkg, root })
     )
@@ -58,14 +75,16 @@ const makeIndexPage = (docDir: string, outDir: string, routes: any) => {
     contents = loadIndex(docDir)
   }
 
-  html = Html(pkg.name, contents, '', routes)
+  html = Html(pkg.name, contents, '', routes, '', '')
 
   /* gen new files */
   writeFileSync(join(outDir, 'index.html'), html, { encoding: 'utf8' })
 }
 
 module.exports = ({ docDir, outDir, silent, prod }: Props) => {
-  const routes = routeTable(docDir)
+  const routes: { [key: string]: any } = routeTable(docDir) || {}
+  let font
+  let codeStyle
 
   // if not production mode, homepage is '/' path
   if (!prod) {
@@ -82,7 +101,7 @@ module.exports = ({ docDir, outDir, silent, prod }: Props) => {
   makeIndexPage(docDir, outDir, routes)
 
   Object.keys(routes).forEach(key => {
-    const subRoutes = routes[key]
+    const subRoutes = routes[key] || {}
 
     for (let title in subRoutes) {
       let file = subRoutes[title]
@@ -91,7 +110,14 @@ module.exports = ({ docDir, outDir, silent, prod }: Props) => {
       let outputFile = join(outputDir, 'index.html')
 
       let contents = mdLoader(join(docDir, file))
-      let html = Html(title, contents, relative(outputDir, outDir) + sep, routes)
+      let html = Html(
+        title,
+        contents,
+        relative(outputDir, outDir) + sep,
+        routes,
+        font,
+        codeStyle
+      )
 
       /* mkdir output dir */
       mkdirp.sync(outputDir)
@@ -106,7 +132,10 @@ module.exports = ({ docDir, outDir, silent, prod }: Props) => {
     }
   })
 
-  copy(join(__dirname, '..', '..', 'static'), join(outDir, 'static')).then(result => {
+  copy(
+    join(__dirname, '..', '..', 'static'),
+    join(outDir, 'static')
+  ).then(result => {
     console.log(`> FlyBook was generated at ${outDir}`)
   })
 }
