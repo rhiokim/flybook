@@ -1,6 +1,6 @@
 {
   "name": "flybook",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "main": "./dist/app.js",
   "license": "MIT",
   "homepage": "https://rhiokim.github.io/flybook",
