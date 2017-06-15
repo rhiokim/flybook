@@ -41,8 +41,8 @@ const Html = (
   contents: string = '',
   root: string,
   routes: any,
-  font: string,
-  codeStyle: string
+  font?: string,
+  codeStyle?: string
 ) => {
   return _document({
     title,
@@ -58,6 +58,8 @@ const Html = (
 const makeIndexPage = (docDir: string, outDir: string, routes: any) => {
   let contents: string
   let html: string
+  let font
+  let codeStyle
 
   const loadIndex = (docDir: string) => {
     contents = mdLoader(join(docDir, 'readme.md'))
@@ -75,7 +77,7 @@ const makeIndexPage = (docDir: string, outDir: string, routes: any) => {
     contents = loadIndex(docDir)
   }
 
-  html = Html(pkg.name, contents, '', routes, '', '')
+  html = Html(pkg.name, contents, '', routes)
 
   /* gen new files */
   writeFileSync(join(outDir, 'index.html'), html, { encoding: 'utf8' })

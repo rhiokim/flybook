@@ -114,7 +114,6 @@ if (!(0, _fs.existsSync)((0, _path.join)(dir, 'toc.yml'))) {
 }
 
 var notifier = (0, _updateNotifier2.default)({ pkg: pkg });
-notifier.notify
+notifier.notify();
 
 // console.log(notifier.update);
-();

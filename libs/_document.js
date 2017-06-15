@@ -7,8 +7,8 @@ type Props = {
   body: string,
   title: string,
   root: string,
-  font: string,
-  codeStyle: string
+  font?: string,
+  codeStyle?: string
 }
 
 module.exports = ({
