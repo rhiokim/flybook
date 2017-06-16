@@ -9,7 +9,7 @@ import headding from 'remark-autolink-headings'
 const app = remark()
 app.use([slug, headding, html])
 
-module.exports = (file: string): string => {
+export default (file: string): string => {
   let markdown: string = fs.readFileSync(file).toString('utf8')
   const { contents } = app.processSync(markdown)
 

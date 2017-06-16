@@ -87,7 +87,7 @@ const makeIndexPage = (
   writeFileSync(join(outDir, 'index.html'), html, { encoding: 'utf8' })
 }
 
-module.exports = ({ docDir, outDir, silent, prod, font, codeStyle }: Props) => {
+export default ({ docDir, outDir, silent, prod, font, codeStyle }: Props) => {
   const routes: { [key: string]: any } = routeTable(docDir) || {}
 
   // if not production mode, homepage is '/' path

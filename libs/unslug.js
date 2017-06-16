@@ -1,5 +1,5 @@
 // @flow
-module.exports = (slugs: string) => {
+export default (slugs: string) => {
   slugs = slugs.replace(/_/g, '-')
   slugs = slugs.replace(/--/g, '-')
 

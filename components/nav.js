@@ -26,4 +26,4 @@ const Nav = ({ homepage, repository = {} }: Props) =>
     <a href={repository.url}>Github</a>
   </nav>
 
-module.exports = Nav
+export default Nav

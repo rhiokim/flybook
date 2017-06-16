@@ -7,7 +7,7 @@ type Routes = {
   [key: string]: string
 }
 
-module.exports = (targetDir: string) => {
+export default (targetDir: string) => {
   let routes
   let routesObj: ?Routes
   const file = join(targetDir, 'toc.yml')

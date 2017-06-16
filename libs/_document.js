@@ -11,7 +11,7 @@ type Props = {
   codeStyle?: string
 }
 
-module.exports = ({
+export default ({
   body,
   title,
   root = '',

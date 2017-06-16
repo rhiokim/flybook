@@ -35,7 +35,7 @@ type Props = {
   root: string
 }
 
-module.exports = ({
+export default ({
   children,
   title = '',
   className,

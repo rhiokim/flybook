@@ -44,4 +44,4 @@ const App = ({ title, toc, contents, pkg, root }: Props) =>
     />
   </Layout>
 
-module.exports = App
+export default App

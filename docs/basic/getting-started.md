@@ -23,3 +23,20 @@ Basic Content
 Advanced Content
 ```
 
+### Add npm scripts
+
+package.json
+
+```js
+  ,
+  "scripts": {
+    "docs": "flybook docs"
+  },
+  ...
+```
+
+and then run `npm run docs`
+
+### Tutorial Video
+
+<iframe width="100%" height="416" src="https://www.youtube.com/embed/nqJfprV3KUI" frameborder="0" allowfullscreen></iframe>
