@@ -55,11 +55,15 @@ const Html = (
   })
 }
 
-const makeIndexPage = (docDir: string, outDir: string, routes: any) => {
+const makeIndexPage = (
+  docDir: string,
+  outDir: string,
+  routes: any,
+  font?: string,
+  codeStyle?: string
+) => {
   let contents: string
   let html: string
-  let font
-  let codeStyle
 
   const loadIndex = (docDir: string) => {
     contents = mdLoader(join(docDir, 'readme.md'))
@@ -77,16 +81,14 @@ const makeIndexPage = (docDir: string, outDir: string, routes: any) => {
     contents = loadIndex(docDir)
   }
 
-  html = Html(pkg.name, contents, '', routes)
+  html = Html(pkg.name, contents, '', routes, font, codeStyle)
 
   /* gen new files */
   writeFileSync(join(outDir, 'index.html'), html, { encoding: 'utf8' })
 }
 
-module.exports = ({ docDir, outDir, silent, prod }: Props) => {
+module.exports = ({ docDir, outDir, silent, prod, font, codeStyle }: Props) => {
   const routes: { [key: string]: any } = routeTable(docDir) || {}
-  let font
-  let codeStyle
 
   // if not production mode, homepage is '/' path
   if (!prod) {
@@ -100,7 +102,7 @@ module.exports = ({ docDir, outDir, silent, prod }: Props) => {
   mkdirp.sync(outDir)
 
   //
-  makeIndexPage(docDir, outDir, routes)
+  makeIndexPage(docDir, outDir, routes, font, codeStyle)
 
   Object.keys(routes).forEach(key => {
     const subRoutes = routes[key] || {}

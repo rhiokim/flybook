@@ -38,6 +38,18 @@ module.exports = ({
       <link rel="stylesheet" href="${root}static/css/github-flavored-markdown.css" />
       <link rel="stylesheet" href="${root}static/css/main.css" />
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/${codeStyle}.min.css" />
+      <style>
+        body {
+          font-family: "${font}",
+            "HelveticaNeue",
+            "Helvetica Neue",
+            Helvetica,
+            Arial,
+            sans-serif;
+        }
+      </style>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script src="${root}/static/main.js"></script>
       <body>
         <div id="root">${body}</div>
       </body>

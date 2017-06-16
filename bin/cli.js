@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { resolve, join, normalize } from 'path'
+import { resolve, join, normalize, sep } from 'path'
 import { existsSync } from 'fs'
 import inquirer from 'inquirer'
 import parseArgs from 'minimist'
@@ -52,17 +52,19 @@ if (argv.help || !argv._[0]) {
     You can set a custom folder in config https://rhiokim.github.io/flybook
 
     Options
-      -h - list this help
-      -v - version of FlyBook
-      -o - set the output dir (defaults to 'out')
-      -s - do not print any messages to console
-      -t - generate new toc.yml file
+      -h            - list this help
+      -v            - version of FlyBook
+      -o            - set the output dir (defaults to 'out')
+      -s            - do not print any messages to console
+      -t            - generate new toc.yml file
+      --font        - font family (default to 'Rubik|Unica+One') google fonts
+      --codeStyle   - code syntax highlight style (default to 'solarized-dark') hightlight.js
   `
   )
   process.exit(0)
 }
 
-if (argv._[0] === '/' || argv._[0] === '.' || argv._[0] === '..') {
+if (argv._[0] === sep || argv._[0] === '.' || argv._[0] === '..') {
   console.log(
     "> FlyBook doesn't support as root directory (/), current working directory (./), and parent directory (../)"
   )
@@ -76,6 +78,8 @@ const gen = () => {
     docDir: dir,
     silent: argv.silent,
     prod: argv.prod,
+    font: argv.font,
+    codeStyle: argv.codeStyle,
     outDir: normalize(argv.outdir ? resolve(argv.outdir) : resolve(dir, '..', 'out_flybook'))
   }
 

@@ -7,11 +7,11 @@ import slug from 'remark-slug'
 import headding from 'remark-autolink-headings'
 
 const app = remark()
-app.use([slug, headding, hljs, html])
+app.use([slug, headding, html])
 
 module.exports = (file: string): string => {
   let markdown: string = fs.readFileSync(file).toString('utf8')
-  let vfile = app.processSync(markdown)
+  const { contents } = app.processSync(markdown)
 
-  return vfile.contents
+  return contents
 }
