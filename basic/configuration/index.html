@@ -10,33 +10,41 @@
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       <link
-        href="//fonts.googleapis.com/css?family=Rubik|Unica+One"
+        href="//fonts.googleapis.com/css?family=Pangolin"
         rel="stylesheet"
       />
       <link rel="stylesheet" href="../../static/css/normalize.css" />
       <link rel="stylesheet" href="../../static/css/flexboxgrid.min.css" />
       <link rel="stylesheet" href="../../static/css/github-flavored-markdown.css" />
       <link rel="stylesheet" href="../../static/css/main.css" />
-      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css" />
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-light.min.css" />
+      <style>
+        body, .markdown-body {
+          font-family: "Pangolin", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+      </style>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script src="../..//static/main.js"></script>
       <body>
-        <div id="root"><div class="wrap container-fluid"><header class="site-header"><h1><a href="https://rhiokim.github.io/flybook">flybook</a></h1><nav class="nav-link"><a href="https://rhiokim.github.io/flybook">Home</a><a href="https://github.com/rhiokim/fly-book">Github</a></nav></header><section class="main"><aside><div class="chap"><span class="chap-title"></span><ul><li class=""><a href="../../About/index.html">About</a></li></ul></div><div class="chap"><span class="chap-title">Advanced</span><ul><li class=""><a href="../../advanced/github-pages/index.html">Github Pages</a></li><li class=""><a href="../../advanced/theme/index.html">Theme</a></li><li class=""><a href="../../advanced/production/index.html">Production</a></li></ul></div><div class="chap"><span class="chap-title">Basic</span><ul><li class=""><a href="../../basic/getting-started/index.html">Getting Started</a></li><li class="active"><a href="../../basic/configuration/index.html">Configuration</a></li></ul></div><div class="chap"><span class="chap-title">Examples</span><ul><li class=""><a href="../../examples/syntax-highlight/index.html">Syntax Highlight</a></li></ul></div></aside><article><div class="markdown-body"><h2 id="basic-configuration"><a href="#basic-configuration" aria-hidden="true"><span class="icon icon-link"></span></a>Basic Configuration</h2>
+        <div id="root"><div class="wrap container-fluid"><header class="site-header"><h1><a href="https://rhiokim.github.io/flybook">flybook</a></h1><nav class="nav-link"><a href="https://rhiokim.github.io/flybook">Home</a><a href="https://github.com/rhiokim/fly-book">Github</a></nav></header><section class="main"><aside><div class="chap"><span class="chap-title"></span><ul><li class=""><a href="../../About/index.html">About</a></li></ul></div><div class="chap"><span class="chap-title">Basic</span><ul><li class=""><a href="../../basic/getting-started/index.html">Getting Started</a></li><li class="active"><a href="../../basic/configuration/index.html">Configuration</a></li></ul></div><div class="chap"><span class="chap-title">Advanced</span><ul><li class=""><a href="../../advanced/github-pages/index.html">Github Pages</a></li><li class=""><a href="../../advanced/theme/index.html">Theme</a></li><li class=""><a href="../../advanced/production/index.html">Production</a></li></ul></div><div class="chap"><span class="chap-title">Examples</span><ul><li class=""><a href="../../examples/syntax-highlight/index.html">Syntax Highlight</a></li></ul></div></aside><article><div class="markdown-body"><h2 id="basic-configuration"><a href="#basic-configuration" aria-hidden="true"><span class="icon icon-link"></span></a>Basic Configuration</h2>
 <p>Please fill out follow information into <code>package.json</code> file</p>
 <p>package.json</p>
-<pre><code class="hljs language-js">{
-  <span class="hljs-string">"name"</span>: <span class="hljs-string">"PROJECT"</span>,
-  <span class="hljs-string">"description"</span>: <span class="hljs-string">"PROJECT Description"</span>,
-  <span class="hljs-string">"homepage"</span>: <span class="hljs-string">"https://rhiokim.github.com/flybook"</span>,
-  <span class="hljs-string">"repository"</span>: {
-    <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://github.com/rhiokim/fly-book"</span>,
-    <span class="hljs-string">"type"</span>: <span class="hljs-string">"git"</span>
+<pre><code class="language-js">{
+  "name": "PROJECT",
+  "description": "PROJECT Description",
+  "homepage": "https://rhiokim.github.com/flybook",
+  "repository": {
+    "url": "https://github.com/rhiokim/fly-book",
+    "type": "git"
   },
-  <span class="hljs-string">"author"</span>: {
-    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Rhio Kim"</span>,
-    <span class="hljs-string">"email"</span>: <span class="hljs-string">"rhio.kim@gmail.com"</span>,
-    <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://fly-book.github.io/"</span>
+  "author": {
+    "name": "Rhio Kim",
+    "email": "rhio.kim@gmail.com",
+    "url": "https://fly-book.github.io/"
   },
   ...
-}</code></pre>
+}
+</code></pre>
 </div></article></section><footer>© 2017 <a href="https://fly-book.github.io/">Rhio Kim</a>. All rights reserved.</footer></div></div>
       </body>
     </html>

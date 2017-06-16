@@ -10,27 +10,35 @@
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       <link
-        href="//fonts.googleapis.com/css?family=Rubik|Unica+One"
+        href="//fonts.googleapis.com/css?family=Pangolin"
         rel="stylesheet"
       />
       <link rel="stylesheet" href="../../static/css/normalize.css" />
       <link rel="stylesheet" href="../../static/css/flexboxgrid.min.css" />
       <link rel="stylesheet" href="../../static/css/github-flavored-markdown.css" />
       <link rel="stylesheet" href="../../static/css/main.css" />
-      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css" />
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-light.min.css" />
+      <style>
+        body, .markdown-body {
+          font-family: "Pangolin", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+      </style>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script src="../..//static/main.js"></script>
       <body>
-        <div id="root"><div class="wrap container-fluid"><header class="site-header"><h1><a href="https://rhiokim.github.io/flybook">flybook</a></h1><nav class="nav-link"><a href="https://rhiokim.github.io/flybook">Home</a><a href="https://github.com/rhiokim/fly-book">Github</a></nav></header><section class="main"><aside><div class="chap"><span class="chap-title"></span><ul><li class=""><a href="../../About/index.html">About</a></li></ul></div><div class="chap"><span class="chap-title">Advanced</span><ul><li class="active"><a href="../../advanced/github-pages/index.html">Github Pages</a></li><li class=""><a href="../../advanced/theme/index.html">Theme</a></li><li class=""><a href="../../advanced/production/index.html">Production</a></li></ul></div><div class="chap"><span class="chap-title">Basic</span><ul><li class=""><a href="../../basic/getting-started/index.html">Getting Started</a></li><li class=""><a href="../../basic/configuration/index.html">Configuration</a></li></ul></div><div class="chap"><span class="chap-title">Examples</span><ul><li class=""><a href="../../examples/syntax-highlight/index.html">Syntax Highlight</a></li></ul></div></aside><article><div class="markdown-body"><p>To deploy</p>
+        <div id="root"><div class="wrap container-fluid"><header class="site-header"><h1><a href="https://rhiokim.github.io/flybook">flybook</a></h1><nav class="nav-link"><a href="https://rhiokim.github.io/flybook">Home</a><a href="https://github.com/rhiokim/fly-book">Github</a></nav></header><section class="main"><aside><div class="chap"><span class="chap-title"></span><ul><li class=""><a href="../../About/index.html">About</a></li></ul></div><div class="chap"><span class="chap-title">Basic</span><ul><li class=""><a href="../../basic/getting-started/index.html">Getting Started</a></li><li class=""><a href="../../basic/configuration/index.html">Configuration</a></li></ul></div><div class="chap"><span class="chap-title">Advanced</span><ul><li class="active"><a href="../../advanced/github-pages/index.html">Github Pages</a></li><li class=""><a href="../../advanced/theme/index.html">Theme</a></li><li class=""><a href="../../advanced/production/index.html">Production</a></li></ul></div><div class="chap"><span class="chap-title">Examples</span><ul><li class=""><a href="../../examples/syntax-highlight/index.html">Syntax Highlight</a></li></ul></div></aside><article><div class="markdown-body"><p>To deploy</p>
 <h3 id="prerequsite"><a href="#prerequsite" aria-hidden="true"><span class="icon icon-link"></span></a>Prerequsite</h3>
 <p>Install two modules, <code>npm install flybook gh-pages --save-dev</code></p>
 <h3 id="setting"><a href="#setting" aria-hidden="true"><span class="icon icon-link"></span></a>Setting</h3>
 <p><code>package.json</code></p>
-<pre><code class="hljs language-js">{
+<pre><code class="language-js">{
   ...,
-  <span class="hljs-string">"scripts"</span>: {
-    <span class="hljs-string">"docs"</span>: <span class="hljs-string">"flybook docs --outdir=out"</span>,
-    <span class="hljs-string">"pages"</span>: <span class="hljs-string">"gh-pages -d out"</span>
+  "scripts": {
+    "docs": "flybook docs --outdir=out",
+    "pages": "gh-pages -d out"
   }
-}</code></pre>
+}
+</code></pre>
 <p>Open <code>https://[account].github.io/[project-name]</code>. It's done</p>
 <p>Actually <strong>FlyBook</strong> is not dedicated github.
 So it doesn't work well on github because path that is published in gh-pages branch on github will be broken</p>
@@ -40,15 +48,16 @@ So it doesn't work well on github because path that is published in gh-pages bra
 <pre><code>$ npm install replace --save-dev
 </code></pre>
 <p><code>package.json</code></p>
-<pre><code class="hljs language-js">{
+<pre><code class="language-js">{
   ...,
-  <span class="hljs-string">"scripts"</span>: {
-    <span class="hljs-string">"docs"</span>: <span class="hljs-string">"flybook docs --outdir=out"</span>,
-    <span class="hljs-string">"pages"</span>: <span class="hljs-string">"npm run docs &#x26;&#x26; npm run fix:link &#x26;&#x26; npm run fix:static &#x26;&#x26; gh-pages -d out"</span>,
-    <span class="hljs-string">"fix:link"</span>: <span class="hljs-string">"replace '&#x3C;a href=\"/' '&#x3C;a href=\"/YOUR-PROJECT-NAME/' ./out -r -s --include='*.html'"</span>,
-    <span class="hljs-string">"fix:static"</span>: <span class="hljs-string">"replace '/static/' '/YOUR-PROJECT-NAME/static/' ./out -r -s --include='*.html'"</span>
+  "scripts": {
+    "docs": "flybook docs --outdir=out",
+    "pages": "npm run docs &#x26;&#x26; npm run fix:link &#x26;&#x26; npm run fix:static &#x26;&#x26; gh-pages -d out",
+    "fix:link": "replace '&#x3C;a href=\"/' '&#x3C;a href=\"/YOUR-PROJECT-NAME/' ./out -r -s --include='*.html'",
+    "fix:static": "replace '/static/' '/YOUR-PROJECT-NAME/static/' ./out -r -s --include='*.html'"
   }
-}</code></pre>
+}
+</code></pre>
 <p>And then <code>npm run pages</code> and then open <code>https://[account].github.io/[project-name]</code> again</p>
 </div></article></section><footer>© 2017 <a href="https://fly-book.github.io/">Rhio Kim</a>. All rights reserved.</footer></div></div>
       </body>
