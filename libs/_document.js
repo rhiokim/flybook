@@ -40,12 +40,7 @@ export default ({
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/${codeStyle}.min.css" />
       <style>
         body, .markdown-body {
-          font-family: "${font}",
-            "HelveticaNeue",
-            "Helvetica Neue",
-            Helvetica,
-            Arial,
-            sans-serif;
+          font-family: "${font}", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         }
       </style>
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
