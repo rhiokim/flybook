@@ -39,7 +39,7 @@ export default ({
       <link rel="stylesheet" href="${root}static/css/main.css" />
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/${codeStyle}.min.css" />
       <style>
-        body {
+        body, .markdown-body {
           font-family: "${font}",
             "HelveticaNeue",
             "Helvetica Neue",
