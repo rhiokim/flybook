@@ -26,24 +26,65 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
       <script src="/static/main.js"></script>
       <body>
-        <div id="root"><div class="wrap container-fluid"><header class="site-header"><h1><a href="https://rhiokim.github.io/flybook">flybook</a></h1><nav class="nav-link"><a href="https://rhiokim.github.io/flybook">Home</a><a href="https://github.com/rhiokim/flybook">Github</a></nav></header><section class="main"><aside><div class="chap"><span class="chap-title"></span><ul><li class=""><a href="About/index.html">About</a></li></ul></div><div class="chap"><span class="chap-title">Basic</span><ul><li class=""><a href="basic/getting-started/index.html">Getting Started</a></li><li class=""><a href="basic/configuration/index.html">Configuration</a></li></ul></div><div class="chap"><span class="chap-title">Advanced</span><ul><li class=""><a href="advanced/github-pages/index.html">Github Pages</a></li><li class=""><a href="advanced/theme/index.html">Theme</a></li><li class=""><a href="advanced/production/index.html">Production</a></li></ul></div><div class="chap"><span class="chap-title">Examples</span><ul><li class=""><a href="examples/syntax-highlight/index.html">Syntax Highlight</a></li></ul></div></aside><article><div class="markdown-body"><p><code>FlyBook</code> is a simple utility to generate static website. This is inspired by <a href="https://funbook.js.org/">funbook</a> and <a href="https://zeit.co/blog/next">next.js export functionality</a></p>
+        <div id="root"><div class="wrap container-fluid"><header class="site-header"><h1><a href="https://rhiokim.github.io/flybook">flybook</a></h1><nav class="nav-link"><a href="https://rhiokim.github.io/flybook">Home</a><a href="https://github.com/rhiokim/flybook">Github</a></nav></header><section class="main"><aside><div class="chap"><span class="chap-title"></span><ul><li class=""><a href="About/index.html">About</a></li></ul></div><div class="chap"><span class="chap-title">Basic</span><ul><li class=""><a href="basic/getting-started/index.html">Getting Started</a></li><li class=""><a href="basic/configuration/index.html">Configuration</a></li></ul></div><div class="chap"><span class="chap-title">Advanced</span><ul><li class=""><a href="advanced/github-pages/index.html">Github Pages</a></li><li class=""><a href="advanced/theme/index.html">Theme</a></li><li class=""><a href="advanced/production/index.html">Production</a></li></ul></div><div class="chap"><span class="chap-title">Examples</span><ul><li class=""><a href="examples/syntax-highlight/index.html">Syntax Highlight</a></li></ul></div></aside><article><div class="markdown-body"><p><a href="https://rhiokim.github.io/flybook"><img src="./docs/media/logo-250x250.png"></a></p>
+<p>Just write markdown, Flybook will create your book.</p>
+<p><code>FlyBook</code> is a simple utility to generate static website. This is inspired by <a href="https://funbook.js.org/">funbook</a> and <a href="https://zeit.co/blog/next">next.js export functionality</a></p>
 <p>Rewrited using by <strong>React</strong> and <strong>React DOM Server</strong></p>
-<h2 id="usage"><a href="#usage" aria-hidden="true"><span class="icon icon-link"></span></a>Usage</h2>
-<p><strong>`not npm publish yet'</strong></p>
-<pre><code class="language-bash">$ npm i -g flybook
-$ ls [DOCUMENT_ROOT]
-[DOCUMENT_ROOT]
-|____advanced
-| \____theme.md
-|____basic
-| \____getting-started.md
-| \____install.md
-|____examples
-| \____syntax-highlight.md
-|____index.md
-|____toc.yml
-$ flybook [DOCUMENT_ROOT]
+<h2 id="goals"><a href="#goals" aria-hidden="true"><span class="icon icon-link"></span></a>Goals</h2>
+<p>Already we know that we can have a number of document tools to publish markdown docs.
+So flybook will keep in simplest way to generate static web site for writing the manual of project</p>
+<h2 id="how-flybook-works"><a href="#how-flybook-works" aria-hidden="true"><span class="icon icon-link"></span></a>How flybook works</h2>
+<p><img src="./docs/media/flybook-flow-detail.png"></p>
+<h2 id="how-to-use-flybook"><a href="#how-to-use-flybook" aria-hidden="true"><span class="icon icon-link"></span></a>How to use flybook</h2>
+<p>For example, Flybook documentation structure look like below</p>
+<pre><code>$ ls /path/to/project/docs
+  docs
+  |____advanced
+  | \____theme.md
+  |____basic
+  | \____getting-started.md
+  | \____install.md
+  |____examples
+  | \____syntax-highlight.md
+  |____readme.md
 </code></pre>
+<p><strong>globally</strong></p>
+<pre><code>$ npm i -g flybook
+$ cd /path/to/project
+
+$ flybook docs
+> FlyBook was generated at /Users/rhio/Works/my/fly-book/out
+</code></pre>
+<p><strong>with NPM Project</strong></p>
+<pre><code>$ cd /path/to/project
+$ npm install flybook --save-dev
+$
+$ vi package.json
+
+  ,
+  "scripts": {
+    ...,
+    "docs": "flybook docs --outdir=out"
+  },
+  ...
+// after save
+
+$ npm run docs
+</code></pre>
+<h2 id="development"><a href="#development" aria-hidden="true"><span class="icon icon-link"></span></a>Development</h2>
+<p>Turn on the auto build mode after <code>npm install</code></p>
+<pre><code>$ git clone git@github.com:rhiokim/flybook
+$ cd flybook
+$ npm install
+$ npm run build
+</code></pre>
+<p>After that you are able to see the notification with your code changes automatically</p>
+<ul>
+<li>npm run release   // build</li>
+<li>npm run docs      // generate a book with newest code</li>
+</ul>
+<h2 id="license"><a href="#license" aria-hidden="true"><span class="icon icon-link"></span></a>License</h2>
+<p>MIT</p>
 </div></article></section><footer>© 2017 <a href="https://flybook.github.io/">Rhio Kim</a>. All rights reserved.</footer></div></div>
       </body>
     </html>
