@@ -3,6 +3,7 @@ body {
   line-height: 1.6;
   font-weight: 400;
   color: #222;
+  background-color: #fff;
 }
 
 a {
@@ -14,7 +15,7 @@ a {
   margin: 0 auto;
   margin-bottom: 30px;
   max-width: 940px;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid rgba(200,200,200,0.50);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,6 +23,10 @@ a {
 
 .site-header a {
   color: #333;
+}
+
+.site-header h1>a {
+  letter-spacing: 3px;
 }
 
 .nav-link {
@@ -45,7 +50,7 @@ aside {
   width: 240px;
   padding: 0 15px 0 0;
   margin: 0 15px 0 0;
-  border-right: 1px solid #ececec;
+  border-right: 1px solid rgba(206, 211, 216, .5)
 }
 
 aside ul {
@@ -63,6 +68,11 @@ footer {
   max-width: 940px;
   margin: 0 auto;
   padding: 30px 10px;
+  color: rgba(100,100,100,0.50);
+}
+
+footer a {
+  color: #6a737d
 }
 
 .chap {
@@ -84,6 +94,9 @@ footer {
   font-size: 18px;
   color: #333;
   font-weight: 700;
+  text-transform: uppercase;
+  font-size: .7rem;
+  letter-spacing: 3px;
 }
 
 /*
@@ -101,6 +114,11 @@ h6:hover span.icon-link {
 /*
  * markdown reset
  */
+
+ .markdown-body {
+  color: #24292e;
+}
+
 .markdown-body h2 {
   border-bottom: 0;
 }
