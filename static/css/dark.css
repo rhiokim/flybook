@@ -15,7 +15,7 @@ a {
   margin: 0 auto;
   margin-bottom: 30px;
   max-width: 940px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid rgba(80,80,80,0.50);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,7 +51,7 @@ aside {
   width: 240px;
   padding: 0 15px 0 0;
   margin: 0 15px 0 0;
-  border-right: 1px solid #131313;
+  border-right: 1px solid rgba(56, 61, 66, .5)
 }
 
 aside ul {
@@ -69,6 +69,11 @@ footer {
   max-width: 940px;
   margin: 0 auto;
   padding: 30px 10px;
+  color: rgba(255,255,255,0.50);
+}
+
+footer a {
+  color: #ccc
 }
 
 .chap {
