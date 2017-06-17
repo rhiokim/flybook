@@ -18,15 +18,15 @@ So flybook will keep in simplest way to generate static web site for writing the
 For example, Flybook documentation structure look like below
 ```
 $ ls /path/to/project/docs
-docs
-|____advanced
-| \____theme.md
-|____basic
-| \____getting-started.md
-| \____install.md
-|____examples
-| \____syntax-highlight.md
-|____readme.md
+  docs
+  |____advanced
+  | \____theme.md
+  |____basic
+  | \____getting-started.md
+  | \____install.md
+  |____examples
+  | \____syntax-highlight.md
+  |____readme.md
 ```
 
 **globally**

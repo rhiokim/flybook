@@ -46,7 +46,7 @@ export default ({
         }
       </style>
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-      <script src="${root}/static/main.js"></script>
+      <script src="${root}static/main.js"></script>
       <body>
         <div id="root">${body}</div>
       </body>

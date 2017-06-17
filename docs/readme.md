@@ -1,4 +1,4 @@
-[![](./docs/media/logo-250x250.png)](https://rhiokim.github.io/flybook)
+[![](./media/logo-250x250.png)](https://rhiokim.github.io/flybook)
 
 Just write markdown, Flybook will create your book.
 
@@ -11,7 +11,7 @@ Already we know that we can have a number of document tools to publish markdown 
 So flybook will keep in simplest way to generate static web site for writing the manual of project
 
 ## How flybook works
-![](./docs/media/flybook-flow-detail.png)
+![](./media/flybook-flow-detail.png)
 
 ## How to use flybook
 
