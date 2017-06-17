@@ -1,5 +1,3 @@
-[![](./media/logo-250x250.png)](https://rhiokim.github.io/flybook)
-
 Just write markdown, Flybook will create your book.
 
 `FlyBook` is a simple utility to generate static website. This is inspired by [funbook](https://funbook.js.org/) and [next.js export functionality](https://zeit.co/blog/next)
@@ -9,9 +7,6 @@ Rewrited using by **React** and **React DOM Server**
 ## Goals
 Already we know that we can have a number of document tools to publish markdown docs.
 So flybook will keep in simplest way to generate static web site for writing the manual of project
-
-## How flybook works
-![](./media/flybook-flow-detail.png)
 
 ## How to use flybook
 
