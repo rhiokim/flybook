@@ -14,11 +14,19 @@ import _document from './_document'
 import App from '../pages/App'
 
 type Props = {
+  /* document root */
   docDir: string,
+  /* out directory which is generated static files */
   outDir: string,
+  /* disable log */
   silent: boolean,
+  /* when you deploy on not local env */
   prod: boolean,
+  /* theme - now `dark` and `light` only */
+  theme: string,
+  /* font - provided by google font only */
   font?: string,
+  /* syntax highlight - provided by highlight.js */
   codeStyle?: string
 }
 
@@ -41,12 +49,14 @@ const Html = (
   contents: string = '',
   root: string,
   routes: any,
+  theme?: string,
   font?: string,
   codeStyle?: string
 ) => {
   return _document({
     title,
     root,
+    theme,
     font,
     codeStyle,
     body: renderToStaticMarkup(
@@ -59,6 +69,7 @@ const makeIndexPage = (
   docDir: string,
   outDir: string,
   routes: any,
+  theme?: string,
   font?: string,
   codeStyle?: string
 ) => {
@@ -81,13 +92,21 @@ const makeIndexPage = (
     contents = loadIndex(docDir)
   }
 
-  html = Html(pkg.name, contents, '', routes, font, codeStyle)
+  html = Html(pkg.name, contents, '', routes, theme, font, codeStyle)
 
   /* gen new files */
   writeFileSync(join(outDir, 'index.html'), html, { encoding: 'utf8' })
 }
 
-export default ({ docDir, outDir, silent, prod, font, codeStyle }: Props) => {
+export default ({
+  docDir,
+  outDir,
+  silent,
+  prod,
+  theme,
+  font,
+  codeStyle
+  }: Props) => {
   const routes: { [key: string]: any } = routeTable(docDir) || {}
 
   // if not production mode, homepage is '/' path
@@ -102,7 +121,7 @@ export default ({ docDir, outDir, silent, prod, font, codeStyle }: Props) => {
   mkdirp.sync(outDir)
 
   //
-  makeIndexPage(docDir, outDir, routes, font, codeStyle)
+  makeIndexPage(docDir, outDir, routes, theme, font, codeStyle)
 
   Object.keys(routes).forEach(key => {
     const subRoutes = routes[key] || {}
@@ -119,6 +138,7 @@ export default ({ docDir, outDir, silent, prod, font, codeStyle }: Props) => {
         contents,
         relative(outputDir, outDir) + sep,
         routes,
+        theme,
         font,
         codeStyle
       )

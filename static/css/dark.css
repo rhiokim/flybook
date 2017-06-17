@@ -2,7 +2,8 @@ body {
   font-size: 1em;
   line-height: 1.6;
   font-weight: 400;
-  color: #222;
+  color: rgba(255,255,255,0.75);
+  background-color: #24292e
 }
 
 a {
@@ -14,14 +15,19 @@ a {
   margin: 0 auto;
   margin-bottom: 30px;
   max-width: 940px;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .site-header a {
-  color: #333;
+  /*color: #333;*/
+  color: rgba(255,255,255,0.50);
+}
+
+.site-header h1>a {
+  letter-spacing: 3px;
 }
 
 .nav-link {
@@ -45,7 +51,7 @@ aside {
   width: 240px;
   padding: 0 15px 0 0;
   margin: 0 15px 0 0;
-  border-right: 1px solid #ececec;
+  border-right: 1px solid #131313;
 }
 
 aside ul {
@@ -73,7 +79,7 @@ footer {
 }
 
 .chap li > a {
-  color: #6a737d;
+  color: #ccc;
 }
 
 .chap li.active a {
@@ -82,8 +88,11 @@ footer {
 
 .chap-title {
   font-size: 18px;
-  color: #333;
+  color: #777;
   font-weight: 700;
+  text-transform: uppercase;
+  font-size: .7rem;
+  letter-spacing: 3px;
 }
 
 /*
@@ -101,6 +110,11 @@ h6:hover span.icon-link {
 /*
  * markdown reset
  */
+
+ .markdown-body {
+  /*color: #24292e;*/
+}
+
 .markdown-body h2 {
   border-bottom: 0;
 }
@@ -116,7 +130,7 @@ h6:hover span.icon-link {
   padding-top: 0.2em;
   padding-bottom: 0.2em;
   margin: 0;
-  background-color: rgba(27,31,35,0.05);
+  background-color: rgba(244, 244, 244, 0.1);
   border-radius: 3px;
   /*font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;*/
   font-size: 85%;

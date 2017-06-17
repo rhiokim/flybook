@@ -7,6 +7,7 @@ type Props = {
   body: string,
   title: string,
   root: string,
+  theme?: string,
   font?: string,
   codeStyle?: string
 }
@@ -15,6 +16,7 @@ export default ({
   body,
   title,
   root = '',
+  theme = 'light',
   font = 'Rubik|Unica+One',
   codeStyle = 'solarized-dark'
   }: Props) => {
@@ -36,7 +38,7 @@ export default ({
       <link rel="stylesheet" href="${root}static/css/normalize.css" />
       <link rel="stylesheet" href="${root}static/css/flexboxgrid.min.css" />
       <link rel="stylesheet" href="${root}static/css/github-flavored-markdown.css" />
-      <link rel="stylesheet" href="${root}static/css/main.css" />
+      <link rel="stylesheet" href="${root}static/css/${theme}.css" />
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/${codeStyle}.min.css" />
       <style>
         body, .markdown-body {

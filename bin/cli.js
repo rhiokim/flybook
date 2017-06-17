@@ -22,7 +22,7 @@ const argv = parseArgs(process.argv.slice(2), {
     h: 'help',
     s: 'silent',
     o: 'outdir',
-    t: 'toc',
+    t: 'theme',
     v: 'version',
     p: 'prod'
   },
@@ -56,7 +56,7 @@ if (argv.help || !argv._[0]) {
       -v            - version of FlyBook
       -o            - set the output dir (defaults to 'out')
       -s            - do not print any messages to console
-      -t            - generate new toc.yml file
+      -t            - set the theme
       --font        - font family (default to 'Rubik|Unica+One') google fonts
       --codeStyle   - code syntax highlight style (default to 'solarized-dark') hightlight.js
   `
@@ -78,6 +78,7 @@ const gen = () => {
     docDir: dir,
     silent: argv.silent,
     prod: argv.prod,
+    theme: argv.theme,
     font: argv.font,
     codeStyle: argv.codeStyle,
     outDir: normalize(argv.outdir ? resolve(argv.outdir) : resolve(dir, '..', 'out_flybook'))
