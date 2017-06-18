@@ -1,4 +1,7 @@
 // @flow
+import crypto from 'crypto'
+
+const rand: string = crypto.randomBytes(8).toString('hex')
 const defaultDescription = ''
 // const defaultOGURL = ''
 // const defaultOGImage = ''
@@ -35,10 +38,10 @@ export default ({
         href="//fonts.googleapis.com/css?family=${font}"
         rel="stylesheet"
       />
-      <link rel="stylesheet" href="${root}static/css/normalize.css" />
-      <link rel="stylesheet" href="${root}static/css/flexboxgrid.min.css" />
-      <link rel="stylesheet" href="${root}static/css/github-flavored-markdown.css" />
-      <link rel="stylesheet" href="${root}static/css/${theme}.css" />
+      <link rel="stylesheet" href="${root}static/css/normalize.css?${rand}" />
+      <link rel="stylesheet" href="${root}static/css/flexboxgrid.min.css?${rand}" />
+      <link rel="stylesheet" href="${root}static/css/github-flavored-markdown.css?${rand}" />
+      <link rel="stylesheet" href="${root}static/css/${theme}.css?${rand}" />
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/${codeStyle}.min.css" />
       <style>
         body, .markdown-body {
@@ -46,7 +49,7 @@ export default ({
         }
       </style>
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-      <script src="${root}static/main.js"></script>
+      <script src="${root}static/main.js?${rand}"></script>
       <body>
         <div id="root">${body}</div>
       </body>
