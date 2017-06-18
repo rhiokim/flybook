@@ -13,6 +13,12 @@ So flybook will keep in simplest way to generate static web site for writing the
 ## How flybook works
 ![](./docs/media/flybook-flow-detail.png)
 
+## Features
+
+* Custom Styling (Google Fonts, Highlight.js)
+* Theme (only support `light` and `dark` now)
+* Responsive
+
 ## How to use flybook
 
 For example, Flybook documentation structure look like below
