@@ -8,6 +8,6 @@ window.addEventListener('load', () => {
   document.querySelector('.more').addEventListener('click', () => {
     const display = aside.style.display
 
-    aside.style.display = display === 'none' ? 'inline-block' : 'none'
+    aside.style.display = display !== 'inline-block' ? 'inline-block' : 'none'
   })
 })
