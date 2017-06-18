@@ -40,16 +40,13 @@ a {
 }
 
 .main {
-  display: flex;
   max-width: 940px;
   margin: 0 auto;
   padding: 30px 10px;
 }
 
 aside {
-  width: 240px;
   padding: 0 15px 0 0;
-  margin: 0 15px 0 0;
   border-right: 1px solid rgba(206, 211, 216, .5)
 }
 
@@ -58,9 +55,8 @@ aside ul {
   padding-left: 0;
 }
 
-article {
-  padding: 0 0 0 15px;
-  width: calc(100% - 240px);
+.main article {
+  padding-left: 30px;
 }
 
 footer {
@@ -92,7 +88,7 @@ footer a {
 
 .chap-title {
   font-size: 18px;
-  color: #333;
+  color: #aaa;
   font-weight: 700;
   text-transform: uppercase;
   font-size: .7rem;
@@ -145,4 +141,58 @@ h6:hover span.icon-link {
   overflow-x: auto;
   border-radius: 3px;
   padding: 0.7em;
+}
+
+
+/*
+ * mobile support
+ */
+.more {
+  display: none;
+  height: 25px;
+}
+
+@media only screen and (max-width: 768px) {
+  section.main {
+    padding: 5rem 0px;
+  }
+  header.site-header {
+    padding: 0;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background-color: rgba(244,244,244,1);
+    box-shadow: 0px 7px 5px rgba(100,100,100,.1)
+  }
+  header h1 {
+    margin: 0.3em 0;
+    padding-left: 2rem;
+    font-size: 1.5em;
+  }
+  header nav {
+    padding-right: 2rem;
+  }
+  aside {
+    position: fixed;
+    display: none;
+    right: 0;
+    top: 53px;
+    overflow-y: auto;
+    background-color: rgba(234,234,234,1);
+    max-height: calc(100% - 53px);
+  }
+  .main article {
+    padding: 0;
+  }
+  .main aside {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+  }
+  .more {
+    display: inline-block;
+  }
+  .octicon {
+    fill: currentColor;
+  }
 }
