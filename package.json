@@ -21,7 +21,7 @@
     "release": "fly release",
     "serve": "serve out -s -p 5002",
     "docs": "./dist/bin/cli.js docs --outdir=out --font=Pangolin --codeStyle=tomorrow-night",
-    "docs:prod": "./dist/bin/cli.js docs --outdir=out --prod --font=Pangolin --codeStyle=solarized-light --theme=light",
+    "docs:prod": "./dist/bin/cli.js docs --outdir=out --prod --font=Pangolin --codeStyle=solarized-light --theme=dark",
     "pages": "npm run docs:prod && gh-pages -d out",
     "lint": "eslint --format=node_modules/eslint-formatter-pretty 'libs/**/*.@(js|jsx)'",
     "lint:msg": "validate-commit-msg",

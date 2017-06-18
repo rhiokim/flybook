@@ -51,8 +51,8 @@ export default ({
         <Nav {...pkg} />
       </header>
 
-      <section className="main">
-        <aside>
+      <section className="row main">
+        <aside className="col-xs-12 col-sm-3 col-md-3 col-lg-3">
           {Object.keys(toc).map((key: string, i: number) => {
             let nav: NavItem = toc[key]
             return (
@@ -76,7 +76,7 @@ export default ({
             )
           })}
         </aside>
-        <article>
+        <article className="col-xs-12 col-sm-9 col-md-9 col-lg-9">
           {children}
         </article>
       </section>

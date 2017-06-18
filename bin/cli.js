@@ -52,11 +52,11 @@ if (argv.help || !argv._[0]) {
     You can set a custom folder in config https://rhiokim.github.io/flybook
 
     Options
-      -h            - list this help
-      -v            - version of FlyBook
-      -o            - set the output dir (defaults to 'out')
-      -s            - do not print any messages to console
-      -t            - set the theme
+      -h, --help    - list this help
+      -v, --version - version of FlyBook
+      -o, --outdir  - set the output dir (defaults to 'out')
+      -s, --silent  - do not print any messages to console
+      -t, --theme   - set the theme
       --font        - font family (default to 'Rubik|Unica+One') google fonts
       --codeStyle   - code syntax highlight style (default to 'solarized-dark') hightlight.js
   `
