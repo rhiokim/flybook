@@ -43,11 +43,14 @@ const cleanMerge = (source: Obj, dest: Obj) => {
 
 const gen = (docDir: string) => {
   let toc: Obj = {}
-  const files: string[] = glob.sync(join(docDir, '**', '*.md'), {
-    ignore: [join(docDir, 'node_modules', '**')]
+  // const files: string[] = glob.sync(join(docDir, '**', '*.md'), {
+  const files: string[] = glob.sync(join(docDir, '**', '*.*'), {
+    ignore: [join(docDir, 'node_modules', '**')],
+    nodir: true
   })
 
   files
+    .filter(file => /\.(md|markdown|mdown|mkdn|mkd|mdwn|mkdown)$/.test(file))
     .map(file => normalize(file))
     .filter(file => {
       return file !== join(docDir, 'readme.md') // basically readme.md is index file of directory
@@ -57,6 +60,14 @@ const gen = (docDir: string) => {
       const dir: string = unslug(dirname(file))
       const name: string = unslug(basename(file).replace(/\.md$/, ''))
 
+      /*
+       * Parent Directory:
+       *   Child Directory: File Path
+       *
+       * Basic:
+       *   Getting Started: 'basic/getting-started.md'
+       *
+       */
       if (toc.hasOwnProperty(dir)) {
         toc[dir] = Object.assign(toc[dir], {
           [titleize(name)]: file

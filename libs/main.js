@@ -1,6 +1,7 @@
 // @flow
-import { writeFileSync, existsSync } from 'fs'
-import { join, relative, sep } from 'path'
+import { writeFileSync, existsSync, copySync } from 'fs-extra'
+import { join, relative, dirname, sep } from 'path'
+import glob from 'glob'
 import copy from 'recursive-copy'
 import del from 'del'
 import mkdirp from 'mkdirp'
@@ -129,8 +130,9 @@ export default ({
     for (let title in subRoutes) {
       let file = subRoutes[title]
 
-      let outputDir = join(outDir, file.replace(/\.md$/, ''))
-      let outputFile = join(outputDir, 'index.html')
+      let outputDir = join(outDir, dirname(file))
+      // let outputFile = join(outputDir, 'index.html')
+      let outputFile = join(outDir, file.replace(/\.md$/, '.html'))
 
       let contents = mdLoader(join(docDir, file))
       let html = Html(
@@ -161,5 +163,21 @@ export default ({
     join(outDir, 'static')
   ).then(result => {
     console.log(`> FlyBook was generated at ${outDir}`)
+  })
+
+  /* copy assets */
+  const files: string[] = glob.sync(
+    join(
+      docDir,
+      '**',
+      '!(*.md|*.markdown|*.mdown|*.mkdn|*.mkd|*.mdwn|*.mkdown|toc.yml)'
+    ),
+    {
+      ignore: [join(docDir, 'node_modules', '**')],
+      nodir: true
+    }
+  )
+  files.forEach(file => {
+    copySync(file, file.replace(docDir, outDir))
   })
 }

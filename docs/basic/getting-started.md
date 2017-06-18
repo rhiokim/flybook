@@ -1,3 +1,5 @@
+![](images/logo-250x250.png)
+
 ## getting started
 
 1. Wirte markdown docs

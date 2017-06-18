@@ -62,12 +62,7 @@ export default ({
                     key={label}
                     className={classnames({ active: title === label })}
                   >
-                    <a
-                      href={`${root}${nav[label].replace(
-                        /\.md/g,
-                        ''
-                      )}/index.html`}
-                    >
+                    <a href={`${root}${nav[label].replace(/\.md/g, '.html')}`}>
                       {label}
                     </a>
                   </li>
