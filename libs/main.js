@@ -121,7 +121,7 @@ export default ({
   // create output directory
   mkdirp.sync(outDir)
 
-  //
+  // make index page
   makeIndexPage(docDir, outDir, routes, theme, font, codeStyle)
 
   Object.keys(routes).forEach(key => {
@@ -131,14 +131,15 @@ export default ({
       let file = subRoutes[title]
 
       let outputDir = join(outDir, dirname(file))
-      // let outputFile = join(outputDir, 'index.html')
       let outputFile = join(outDir, file.replace(/\.md$/, '.html'))
-
       let contents = mdLoader(join(docDir, file))
+      let relativePath = relative(outputDir, outDir)
+      relativePath = relativePath === '' ? '.' : relativePath
+
       let html = Html(
         title,
         contents,
-        relative(outputDir, outDir) + sep,
+        relativePath + sep,
         routes,
         theme,
         font,
@@ -158,6 +159,7 @@ export default ({
     }
   })
 
+  /* copy static assets */
   copy(
     join(__dirname, '..', '..', 'static'),
     join(outDir, 'static')
@@ -165,7 +167,7 @@ export default ({
     console.log(`> FlyBook was generated at ${outDir}`)
   })
 
-  /* copy assets */
+  /* copy assets which is used in docs */
   const files: string[] = glob.sync(
     join(
       docDir,
