@@ -1,4 +1,4 @@
-[![](./docs/media/logo-250x250.png)](https://rhiokim.github.io/flybook)
+[![](./docs/basic/images/logo-250x250.png)](https://rhiokim.github.io/flybook)
 
 Just write markdown, Flybook will create your book.
 
