@@ -1,10 +1,11 @@
 ---
   Basic: 
-    Configuration: "basic/configuration.md"
     Getting Started: "basic/getting-started.md"
+    Configuration: "basic/configuration.md"
   Advanced: 
+    Styling: "advanced/styling.md"
     Github Pages: "advanced/github-pages.md"
     Production: "advanced/production.md"
-    Styling: "advanced/styling.md"
+    Github Cname: "advanced/github-CNAME.md"
   Examples: 
     Syntax Highlight: "examples/syntax-highlight.md"
