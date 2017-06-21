@@ -1,4 +1,4 @@
-## To generate for production
+## Generating production pages
 
 ```
   ...
@@ -11,8 +11,8 @@
   },
 ```
 
-Flybook can generate static website for local environment and the others such as `gh-pages` or your own server
+Flybook generates static web pages on your local environment and other places such as `gh-pages` branch of your github repository or your own server.
 
-There is no required configuration for local(= dev) environment. But if you'll deploy static files which is genereted by Flybook. You should be set the some variable into `package.json` file
+In local(= dev) environment, flybook doesn't need any configuration. But when you deploy static files—you publish them in production(= real) level—you must set some variables into `package.json` file as well as command line option `--prod` into your command, just like the example above.
 
-See [Configuration](../../basic/configuration/index.html)
+See [BASIC > Configuration](../../basic/configuration) for more detailed information.
