@@ -4,7 +4,7 @@
   ...
   "scripts": {
     /* local */
-    "docs": "flybook docs --outdir=out"
+    "docs": "flybook docs --outdir=out",
     /* production */
     "docs:prod": "flybook docs --outdir=out --prod"
     ...
