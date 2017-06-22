@@ -162,7 +162,7 @@ h6:hover span.icon-link {
     left: 0;
     width: 100%;
     background-color: rgba(41,41,41,1);
-    box-shadow: 0px 7px 5px rgba(0,0,0,.1)
+    box-shadow: 0px 5px 10px rgba(0,0,0,.1)
   }
   header h1 {
     margin: 0.3em 0;
@@ -176,9 +176,9 @@ h6:hover span.icon-link {
     position: fixed;
     display: none;
     right: 0;
-    top: 53px;
+    top: 52px;
     overflow-y: auto;
-    background-color: rgba(50,50,50,1);
+    background-color: rgba(37, 37, 37, 1);
     max-height: calc(100% - 53px);
   }
   .main article {
@@ -188,6 +188,8 @@ h6:hover span.icon-link {
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
+    border: 1px solid rgba(80,80,80,0.50);
+    box-shadow: 0px 5px 10px rgba(0,0,0,.1);
   }
   .more {
     display: inline-block;
