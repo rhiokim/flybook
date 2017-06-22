@@ -40,6 +40,17 @@ type Props = {
   root: string
 }
 
+// @TODO need to improve performance
+const fixURI = (url: string = '') => {
+  let arr = url.split('/')
+
+  let res = arr.map(dir => {
+    return encodeURIComponent(dir)
+  })
+
+  return res.join('/')
+}
+
 export default ({
   children,
   title = '',
@@ -62,16 +73,19 @@ export default ({
             let nav: NavItem = toc[key]
             return (
               <Chap title={key === '.' ? '' : key} key={i}>
-                {Object.keys(nav).map((label: string) =>
-                  <li
-                    key={label}
-                    className={classnames({ active: title === label })}
-                  >
-                    <a href={`${root}${nav[label].replace(/\.md/g, '.html')}`}>
-                      {label}
-                    </a>
-                  </li>
-                )}
+                {Object.keys(nav).map((label: string) => {
+                  let url = `${root}${nav[label].replace(/\.md/g, '.html')}`
+                  return (
+                    <li
+                      key={label}
+                      className={classnames({ active: title === label })}
+                    >
+                      <a href={fixURI(url)}>
+                        {label}
+                      </a>
+                    </li>
+                  )
+                })}
               </Chap>
             )
           })}

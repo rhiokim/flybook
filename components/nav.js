@@ -27,7 +27,7 @@ const links: ILink[] = [].map((link: ILink, i: number) => {
 })
 
 const Nav = ({ homepage, repository }: Props) => {
-  const repoUrl = repo(repository)
+  const repoUrl = repo(repository) // @TODO need to split this logic from here
   return (
     <nav className="nav-link">
       <a href={homepage}>Home</a>
