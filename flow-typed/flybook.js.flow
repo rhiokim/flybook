@@ -1,0 +1,4 @@
+declare class RegExpMatchArray extends Array<string> {
+  index: number;
+  input: string;
+}

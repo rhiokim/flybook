@@ -5,7 +5,7 @@
   "license": "MIT",
   "homepage": "https://rhiokim.github.io/flybook",
   "repository": {
-    "url": "https://github.com/rhiokim/flybook",
+    "url": "https://github.com/rhiokim/flybook.git",
     "type": "git"
   },
   "author": {

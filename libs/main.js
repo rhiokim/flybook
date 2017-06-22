@@ -36,7 +36,10 @@ let pkg = {
   description: 'Flybook',
   homepage: '',
   author: {},
-  repository: {}
+  repository: {
+    type: 'git',
+    url: ''
+  }
 }
 
 try {

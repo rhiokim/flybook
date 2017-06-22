@@ -15,15 +15,20 @@ type Author = {
   name?: string
 }
 
-type Repository = {
-  url?: string
-}
+type RepositoryType = 'git' | 'svn'
+
+type Repository =
+  | string
+  | {
+      type: RepositoryType,
+      url: string
+    }
 
 type Pkg = {
   name: string,
   homepage?: string,
   author?: Author,
-  repository?: Repository
+  repository: Repository
 }
 
 type Props = {
