@@ -9,7 +9,3 @@
     Github Cname: "advanced/github-CNAME.md"
   Examples: 
     Syntax Highlight: "examples/syntax-highlight.md"
-    With Special Char#sharp: "examples/with-special-char#sharp.md"
-    With Special Char.dot: "examples/with-special-char.dot.md"
-    With Special Char?question: "examples/with-special-char?question.md"
-    Long Long Long Long Long Long Long Long Long: "examples/long-long-long-long-long-long-long-long-long.md"

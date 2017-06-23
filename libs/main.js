@@ -1,6 +1,6 @@
 // @flow
 import { writeFileSync, existsSync, copySync } from 'fs-extra'
-import { join, relative, dirname, sep } from 'path'
+import { join, relative, dirname, normalize, sep } from 'path'
 import glob from 'glob'
 import copy from 'recursive-copy'
 import del from 'del'
@@ -182,7 +182,7 @@ export default ({
       nodir: true
     }
   )
-  files.forEach(file => {
+  files.map(file => normalize(file)).forEach(file => {
     copySync(file, file.replace(docDir, outDir))
   })
 }
