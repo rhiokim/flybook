@@ -63,9 +63,7 @@ const Html = (
     theme,
     font,
     codeStyle,
-    body: renderToStaticMarkup(
-      createElement(App, { title, contents, toc: routes, pkg, root })
-    )
+    body: renderToStaticMarkup(createElement(App, { title, contents, toc: routes, pkg, root }))
   })
 }
 
@@ -102,15 +100,7 @@ const makeIndexPage = (
   writeFileSync(join(outDir, 'index.html'), html, { encoding: 'utf8' })
 }
 
-export default ({
-  docDir,
-  outDir,
-  silent,
-  prod,
-  theme,
-  font,
-  codeStyle
-  }: Props) => {
+export default ({ docDir, outDir, silent, prod, theme, font, codeStyle }: Props) => {
   const routes: { [key: string]: any } = routeTable(docDir) || {}
 
   // if not production mode, homepage is '/' path
@@ -139,15 +129,7 @@ export default ({
       let relativePath = relative(outputDir, outDir)
       relativePath = relativePath === '' ? '.' : relativePath
 
-      let html = Html(
-        title,
-        contents,
-        relativePath + sep,
-        routes,
-        theme,
-        font,
-        codeStyle
-      )
+      let html = Html(title, contents, relativePath + sep, routes, theme, font, codeStyle)
 
       /* mkdir output dir */
       mkdirp.sync(outputDir)
@@ -163,20 +145,13 @@ export default ({
   })
 
   /* copy static assets */
-  copy(
-    join(__dirname, '..', '..', 'static'),
-    join(outDir, 'static')
-  ).then(result => {
+  copy(join(__dirname, '..', '..', 'static'), join(outDir, 'static')).then(result => {
     console.log(`> FlyBook was generated at ${outDir}`)
   })
 
   /* copy assets which is used in docs */
   const files: string[] = glob.sync(
-    join(
-      docDir,
-      '**',
-      '!(*.md|*.markdown|*.mdown|*.mkdn|*.mkd|*.mdwn|*.mkdown|toc.yml)'
-    ),
+    join(docDir, '**', '!(*.md|*.markdown|*.mdown|*.mkdn|*.mkd|*.mdwn|*.mkdown|toc.yml)'),
     {
       ignore: [join(docDir, 'node_modules', '**')],
       nodir: true

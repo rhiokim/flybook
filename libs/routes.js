@@ -16,9 +16,7 @@ export default (targetDir: string) => {
     routes = readFileSync(file, 'utf8')
     routesObj = (safeLoad(routes): ?Routes)
   } catch (e) {
-    throw new Error(
-      `> No such toc.yml file exists as the document root: ${file}`
-    )
+    throw new Error(`> No such toc.yml file exists as the document root: ${file}`)
   }
 
   return routesObj
