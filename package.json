@@ -135,5 +135,10 @@
       "lint",
       "git add"
     ]
-  }
+  },
+  "contributors": [{
+    "name": "Uno Kim",
+    "email": "djkehh@gmail.com",
+    "url": "https://djkeh.github.io/"
+  }]
 }
