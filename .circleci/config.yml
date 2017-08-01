@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node:8.1
     working_directory: ~/flybook
     steps:
       - checkout
@@ -23,10 +23,10 @@ jobs:
       - checkout
       - run:
           name: lint
-          command: npm run lint
+          command: yarn lint
       - run:
           name: coverage
-          command: npm run flow:coverage
+          command: yarn flow:coverage
 
 workflows:
   version: 2
