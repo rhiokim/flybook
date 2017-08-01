@@ -17,6 +17,8 @@ jobs:
       - run:
           name: flybook gen
           command: yarn docs
+      - run: git config --global user.email "rhio.kim@gmail.com"
+      - run: git config --global user.name "Rhio Kim"
       - run:
           name: deploy docs
           command: yarn pages
