@@ -1,0 +1,23 @@
+machine:
+  node:
+    version: 6.10.0
+
+dependencies:
+  override:
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
+
+# general:
+#   branches:
+#     only:
+#       - ci-test
+
+test:
+  override:
+  # post:
+    # - yarn run flow:coverage
+    - yarn run release
+    - yarn run docs
+    - yarn run pages
+    # - yarn run coveralls
