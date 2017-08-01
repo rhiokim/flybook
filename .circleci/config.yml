@@ -12,7 +12,10 @@ jobs:
           name: install-npm-wee
           command: yarn install
       - run:
-          name: generate docs
+          name: fly-build
+          command: yarn release
+      - run:
+          name: flybook gen
           command: yarn docs
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
