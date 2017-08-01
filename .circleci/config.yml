@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8.1
+      - image: circleci/node:4.8
     working_directory: ~/flybook
     steps:
       - checkout
@@ -26,9 +26,6 @@ jobs:
       - image: circleci/node:4.8
     steps:
       - checkout
-      - run:
-          name: install-npm-wee
-          command: yarn install
       - run:
           name: lint
           command: yarn lint
