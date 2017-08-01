@@ -27,6 +27,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: install-npm-wee
+          command: yarn install
+      - run:
           name: lint
           command: yarn lint
       - run:
