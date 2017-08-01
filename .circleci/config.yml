@@ -1,20 +1,19 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/mern-starter
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/flybook
     steps:
       - checkout
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest'
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
-          command: npm install
+          command: yarn install
       - run:
           name: generate docs
-          command: npm run docs
+          command: yarn docs
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
@@ -39,4 +38,4 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              only: feature/ci
