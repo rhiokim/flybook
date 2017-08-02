@@ -2,13 +2,16 @@
 import crypto from 'crypto'
 
 const rand: string = crypto.randomBytes(8).toString('hex')
-const defaultDescription = ''
+// const defaultDescription = ''
 // const defaultOGURL = ''
 // const defaultOGImage = ''
 
 type Props = {
-  body: string,
   title: string,
+  /* html */
+  body: string,
+  /* original doc */
+  markdown: string,
   root: string,
   theme?: string,
   font?: string,
@@ -16,8 +19,9 @@ type Props = {
 }
 
 export default ({
-  body,
   title,
+  body,
+  markdown,
   root = '',
   theme = 'light',
   font = 'Rubik|Unica+One',
@@ -30,7 +34,7 @@ export default ({
       <title>${title}</title>
       <meta
         name="description"
-        content=${defaultDescription}
+        content="${markdown.substr(0, 100)}"
       />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 

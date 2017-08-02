@@ -19,6 +19,7 @@
   "scripts": {
     "build": "fly",
     "release": "fly release",
+    "deploy:local": "npm link --local && flybook --version",
     "serve": "serve out -s -p 5002",
     "docs": "./dist/bin/cli.js docs --outdir=out --font=Overpass --codeStyle=tomorrow-night",
     "docs:prod": "./dist/bin/cli.js docs --outdir=out --prod --font=Overpass --codeStyle=solarized-light --theme=light",
@@ -54,7 +55,9 @@
     "remark-highlight.js": "^5.0.0",
     "remark-html": "^6.0.0",
     "remark-slug": "^4.2.2",
+    "strip-markdown": "^3.0.1",
     "titleize": "^1.0.0",
+    "trim-newlines": "^2.0.0",
     "update-notifier": "^2.2.0"
   },
   "devDependencies": {
@@ -136,9 +139,11 @@
       "git add"
     ]
   },
-  "contributors": [{
-    "name": "Uno Kim",
-    "email": "djkehh@gmail.com",
-    "url": "https://djkeh.github.io/"
-  }]
+  "contributors": [
+    {
+      "name": "Uno Kim",
+      "email": "djkehh@gmail.com",
+      "url": "https://djkeh.github.io/"
+    }
+  ]
 }

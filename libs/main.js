@@ -51,6 +51,7 @@ try {
 const Html = (
   title: string,
   contents: string = '',
+  markdown: string = '',
   root: string,
   routes: any,
   theme?: string,
@@ -59,6 +60,7 @@ const Html = (
 ) => {
   return _document({
     title,
+    markdown,
     root,
     theme,
     font,
@@ -75,26 +77,24 @@ const makeIndexPage = (
   font?: string,
   codeStyle?: string
 ) => {
-  let contents: string
+  let readme: string = process.cwd()
   let html: string
 
   const loadIndex = (docDir: string) => {
-    contents = mdLoader(join(docDir, 'readme.md'))
-    return contents
+    return mdLoader(join(docDir, 'readme.md'))
   }
 
   if (!existsSync(join(docDir, 'readme.md'))) {
     if (!existsSync(join(process.cwd(), 'readme.md'))) {
       console.log(`> No 'readme.md' file found in ${docDir} and project root`)
       process.exit(1)
-    } else {
-      contents = loadIndex(process.cwd())
     }
   } else {
-    contents = loadIndex(docDir)
+    readme = docDir
   }
 
-  html = Html(pkg.name, contents, '', routes, theme, font, codeStyle)
+  let { contents, markdown } = loadIndex(readme)
+  html = Html(pkg.name, contents, markdown, '', routes, theme, font, codeStyle)
 
   /* gen new files */
   writeFileSync(join(outDir, 'index.html'), html, { encoding: 'utf8' })
@@ -125,11 +125,11 @@ export default ({ docDir, outDir, silent, prod, theme, font, codeStyle }: Props)
 
       let outputDir = join(outDir, dirname(file))
       let outputFile = join(outDir, file.replace(/\.md$/, '.html'))
-      let contents = mdLoader(join(docDir, file))
+      let { contents, markdown } = mdLoader(join(docDir, file))
       let relativePath = relative(outputDir, outDir)
       relativePath = relativePath === '' ? '.' : relativePath
 
-      let html = Html(title, contents, relativePath + sep, routes, theme, font, codeStyle)
+      let html = Html(title, contents, markdown, relativePath + sep, routes, theme, font, codeStyle)
 
       /* mkdir output dir */
       mkdirp.sync(outputDir)
