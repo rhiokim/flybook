@@ -9,3 +9,11 @@
     Github Cname: "advanced/github-CNAME.md"
   Examples: 
     Syntax Highlight: "examples/syntax-highlight.md"
+  :a Page/advanced: 
+    Advanced: ":a-page/advanced/advanced.md"
+  :a Page/basic: 
+    Basic: ":a-page/basic/basic.md"
+  :a Page: 
+    Readme: ":a-page/readme.md"
+  :b Page: 
+    Readmd: ":b-page/readmd.md"
