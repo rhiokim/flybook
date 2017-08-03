@@ -21,7 +21,7 @@ jobs:
       - run: git config --global user.name "Rhio Kim"
       - run:
           name: deploy docs
-          command: yarn pages
+          command: yarn pages -- -m 'test'
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
