@@ -2,7 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:4.8
+      - image: circleci/node:6
+      # - image: circleci/node:4.8
     working_directory: ~/flybook
     steps:
       - checkout
