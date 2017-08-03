@@ -11,36 +11,36 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
-          command: yarn install
+          command: npm install
       - run:
           name: fly-build
-          command: yarn release
+          command: npm run release
       - run:
           name: flybook gen
-          command: yarn docs
+          command: npm run docs
       - run: git config --global user.email "rhio.kim@gmail.com"
       - run: git config --global user.name "Rhio Kim"
       - run:
           name: deploy docs
-          command: yarn pages -- -m 'test'
+          command: npm run pages -- -m 'test'
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
   test:
     docker:
-      - image: circleci/node:4.8
+      - image: circleci/node:6
     steps:
       - checkout
       - run:
           name: install-npm-wee
-          command: yarn install
+          command: npm install
       - run:
           name: lint
-          command: yarn lint
+          command: npm run lint
       - run:
           name: coverage
-          command: yarn flow:coverage
+          command: npm run flow:coverage
 workflows:
   version: 2
   build_and_test:
